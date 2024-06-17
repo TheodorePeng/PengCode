@@ -1,6 +1,6 @@
 // #popclip
 // name: Brackets
-// identifier: com.pilotmoon.popclip.extension.brackets
+// identifier: com.Peng.popclip.extension.brackets
 // description: 'Put brackets around the selected text, choosing from (), [], {}, <> and //.'
 // popclipVersion: 4586
 // entitlements: [dynamic]
