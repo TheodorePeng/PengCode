@@ -1,0 +1,201 @@
+form .snipo-stars {
+	background: url('chrome-extension://__MSG_@@extension_id__/icon/star.png') repeat-x 0 0;
+	width: 150px;
+	margin: 0 auto;
+}
+form .snipo-stars input[type='radio'] {
+	position: absolute;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+form .snipo-stars input[type='radio'].snipo-star-5:checked ~ span {
+	width: 100%;
+}
+form .snipo-stars input[type='radio'].snipo-star-4:checked ~ span {
+	width: 80%;
+}
+form .snipo-stars input[type='radio'].snipo-star-3:checked ~ span {
+	width: 60%;
+}
+form .snipo-stars input[type='radio'].snipo-star-2:checked ~ span {
+	width: 40%;
+}
+form .snipo-stars input[type='radio'].snipo-star-1:checked ~ span {
+	width: 20%;
+}
+form .snipo-stars label {
+	display: block;
+	width: 30px;
+	height: 30px;
+	margin: 0 !important;
+	padding: 0 !important;
+	text-indent: -999em;
+	float: left;
+	position: relative;
+	z-index: 10;
+	background: transparent !important;
+	cursor: pointer;
+}
+form .snipo-stars label:hover ~ span {
+	background-position: 0 -60px;
+}
+form .snipo-stars label.snipo-star-5:hover ~ span {
+	width: 100% !important;
+}
+form .snipo-stars label.snipo-star-4:hover ~ span {
+	width: 80% !important;
+}
+form .snipo-stars label.snipo-star-3:hover ~ span {
+	width: 60% !important;
+}
+form .snipo-stars label.snipo-star-2:hover ~ span {
+	width: 40% !important;
+}
+form .snipo-stars label.snipo-star-1:hover ~ span {
+	width: 20% !important;
+}
+form .snipo-stars span {
+	display: block;
+	width: 0;
+	position: relative;
+	top: 0;
+	left: 0;
+	height: 30px;
+	background: url('chrome-extension://__MSG_@@extension_id__/icon/star.png') repeat-x 0 -60px;
+	-webkit-transition: -webkit-width 0.5s;
+	-moz-transition: -moz-width 0.5s;
+	-ms-transition: -ms-width 0.5s;
+	-o-transition: -o-width 0.5s;
+	transition: width 0.5s;
+}
+
+.snipo-rate-extension-label {
+	width: 150px;
+	display: block;
+	margin: 0 auto;
+	font-size: 16px;
+	display: block;
+}
+
+.snipo-rate-extension-label-general {
+	font-size: 16px;
+	padding: 10px;
+	display: block;
+}
+
+.snipo-promo {
+	margin: 10px 0px;
+	padding: 12px;
+	position: fixed;
+	z-index: 2147483647;
+	right: 30px;
+	bottom: 10px;
+	box-shadow: rgba(0, 0, 0, 0.18) 0px 0px 15px;
+	color: var(--yt-spec-text-primary);
+	width: 400px;
+	display: none;
+}
+.snipo-promo-button {
+	transition: background 2s;
+	background-image: linear-gradient(
+			45deg,
+			var(--yt-spec-assistive-feed-themed-gradient-1),
+			var(--yt-spec-assistive-feed-themed-gradient-2),
+			var(--yt-spec-assistive-feed-themed-gradient-3)
+		),
+		linear-gradient(
+			45deg,
+			var(--yt-spec-assistive-feed-vibrant-gradient-1),
+			var(--yt-spec-assistive-feed-vibrant-gradient-2),
+			var(--yt-spec-assistive-feed-vibrant-gradient-3)
+		);
+	background-clip: padding-box, border-box;
+	background-origin: border-box, border-box;
+	display: block;
+	padding: 15px 15px;
+	text-decoration: none;
+	border-radius: 3px;
+	margin: 0 auto;
+	border: 1px solid #2196f3;
+	color: #2196f3;
+}
+.snipo-promo-body {
+	width: 10%;
+	float: left;
+	height: 62px;
+	position: relative;
+}
+.snipo-promo-header {
+	line-height: 21px;
+	height: 100%;
+	text-align: center;
+}
+.snipo-promo-header p {
+	font-size: 14px;
+}
+.snipo-promo-header a {
+	color: inherit;
+}
+.snipo-promo-img {
+	position: absolute;
+	margin: auto;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	width: 50px;
+	height: 50px;
+}
+
+.snipo-close-popup {
+	margin: 5px 5px 0 0;
+	right: 0;
+	top: 0;
+	display: inline-block;
+	position: absolute;
+	z-index: 100;
+	cursor: pointer;
+	background-color: initial;
+	color: var(--yt-spec-text-primary);
+}
+
+.snipo-promo.on {
+	display: block;
+}
+
+.snipo-promo {
+	background-color: #ffffff;
+}
+
+html[dark] .snipo-promo {
+	background-color: #282828;
+}
+
+.snipo-promo-link-clickable {
+	cursor: pointer;
+}
+
+.snipo-open-notion-svg svg {
+	display: block !important;
+	width: 18px !important;
+	height: 18px !important;
+}
+
+.snipo-open-notion-svg {
+	width: 18px;
+	height: 18px;
+	color: var(--yt-spec-text-primary);
+	background-color: var(--yt-spec-badge-chip-background);
+	padding: 8px;
+	border-radius: 18px;
+	display: block;
+}
+
+.snipo-open-notion-svg:hover {
+	background-color: var(--yt-spec-mono-tonal-hover);
+	border-color: transparent;
+}
+
+.snipo-join-patreon-top {
+	cursor: pointer;
+}

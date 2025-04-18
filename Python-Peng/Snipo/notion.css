@@ -1,0 +1,55 @@
+.snipo-action-icon {
+	fill: rgba(55, 53, 47, 0.85);
+}
+
+.dark .snipo-action-icon {
+	fill: rgba(255, 255, 255, 0.81);
+}
+
+.snipo-overlay-exist .snipo-action-icon {
+	fill: rgba(255, 255, 255, 0.81);
+}
+
+.snipo-overlay {
+	width: 0%;
+	height: 0%;
+	visibility: hidden;
+}
+
+.snipo-overlay-on {
+	background-color: rgba(22, 22, 22, 0.7);
+	top: 0px;
+	z-index: 2201;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	visibility: visible;
+}
+
+#snipo-settings-modal {
+	background: white;
+	margin: 0 auto;
+	z-index: 99999999;
+	border: 0px;
+	-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+	height: 90%;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 80%;
+}
+
+.notion-body.dark #snipo-settings-modal {
+	background: #191919;
+}
+
+.snipo-action-off {
+	display: none;
+}
+
+.snipo-installed [data-content-editable-void='true'] [style='grid-area: 1 / 1; width: 100%; height: 100%;'] img {
+	padding-right: 50px !important;
+}

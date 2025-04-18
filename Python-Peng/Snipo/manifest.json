@@ -1,0 +1,101 @@
+{
+"update_url": "https://clients2.google.com/service/update2/crx",
+
+	"manifest_version": 3,
+	"name": "__MSG_name__",
+	"short_name": "SNIPO",
+	"description": "__MSG_description__",
+	"author": "Dima Nabok",
+	"homepage_url": "https://snipo.io",
+	"default_locale": "en",
+	"options_page": "/snipo-app/dist/index.html",
+	"version": "3.7.1",
+	"content_scripts": [
+		{
+			"matches": ["*://*/*"],
+			"js": ["/build/app.js"],
+			"run_at": "document_start"
+		},
+		{
+			"matches": ["https://*.notion.so/*"],
+			"css": ["/notion.css"],
+			"run_at": "document_start"
+		},
+		{
+			"matches": ["https://*.youtube.com/*"],
+			"css": ["/youtube.css"],
+			"run_at": "document_start"
+		}
+	],
+	"background": {
+		"service_worker": "/build/background.js"
+	},
+	"web_accessible_resources": [
+		{
+			"resources": ["/icon/*", "/dist/*"],
+			"matches": ["https://*.youtube.com/*"]
+		},
+		{
+			"resources": ["/build/*", "/snipo-app/dist/*"],
+			"matches": ["https://*.notion.so/*"]
+		},
+		{
+			"resources": ["/build/skillshare.js"],
+			"matches": ["https://*.skillshare.com/*"]
+		}
+	],
+	"icons": {
+		"16": "/icon/icon_16.png",
+		"48": "/icon/icon_48.png",
+		"128": "/icon/icon_128.png"
+	},
+	"host_permissions": ["<all_urls>"],
+	"permissions": [
+		"storage",
+		"unlimitedStorage",
+		"clipboardRead",
+		"contextMenus",
+		"notifications",
+		"tabs",
+		"system.display"
+	],
+	"action": {
+		"default_icon": {
+			"16": "/icon/icon_16.png",
+			"48": "/icon/icon_48.png",
+			"128": "/icon/icon_128.png"
+		},
+		"default_popup": "/snipo-app/dist/index.html",
+		"default_title": "__MSG_name__"
+	},
+	"commands": {
+		"time": {
+			"description": "__MSG_commands1__"
+		},
+		"screen": {
+			"description": "__MSG_commands2__"
+		},
+		"pause": {
+			"description": "__MSG_commands3__"
+		},
+		"back5s": {
+			"description": "__MSG_commands4__"
+		},
+		"skip5s": {
+			"description": "__MSG_commands5__"
+		},
+		"speed-inc": {
+			"description": "__MSG_commands6__"
+		},
+		"speed-dec": {
+			"description": "__MSG_commands7__"
+		},
+		"transcript": {
+			"description": "__MSG_commands8__"
+		},
+		"clip": {
+			"description": "__MSG_commands9__"
+		}
+	},
+	"key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAgiV33JgHGqloMryxlvCx1XFNj+3yhbpKlbYHbvffKMdycOMrLlDKFksdgguNErkXoHxk6NXRZ7OSy40Bl9W3j7VnVU6uXHCl8Vw5MbseGcNCXUwP70UPykCC+49T/SPucjZxf3N0Gvm5Kdwd1KKFcnpmmYnJ4AkN9EK1J49nvtPaHwzKe5GQ+IDHQrIi1tRw2KFN3nouaLXDIu8IHo441yzohHII3kb0iMZQ5G1dryn73B0zfbXhRyHwXaTTmjBPSevYW9BC75L/DLk/nw7ULaVaHBTjZ+FZ3FPP3WTsB+sAoeKiOWwUrZ+8UbVymC0YF7ck5wNqBCjgaLawkcqzZQIDAQAB"
+}

@@ -1,0 +1,1 @@
+!function(){try{var t=window.fetch;window.fetch=function(){return 0===arguments.length||"/api/v3/createOauthAuthorizationCode"===arguments[0]&&(document.querySelector("html").dataset.snipo=arguments[1].body),t.apply(this,arguments)}}catch(t){console.log(t)}}();

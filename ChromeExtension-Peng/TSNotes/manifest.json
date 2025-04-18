@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "TSNotes",
+  "version": "1.0",
+  "description": "创建和管理 TSNotes 链接",
+  "permissions": [
+    "storage",
+    "tabs",
+    "scripting",
+    "webNavigation",
+    "clipboardWrite",
+    "commands",
+    "contextMenus"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["js/content.js"]
+    }
+  ],
+  "action": {
+    "default_title": "获取当前时间点 TSNotes Link"
+  },
+  "commands": {
+    "copy-tsnotes-link": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y"
+      },
+      "description": "复制当前时间点的 TSNotes Link"
+    },
+    "open-tsnotes-window": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+U",
+        "mac": "Command+Shift+U"
+      },
+      "description": "打开空白 TSNotes Window"
+    }
+  }
+}

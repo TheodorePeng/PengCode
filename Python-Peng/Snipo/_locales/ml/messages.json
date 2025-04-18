@@ -1,0 +1,35 @@
+{
+	"description": {
+		"message": "Take YouTube notes directly to Notion, generate AI flashcards, capture screenshots, and sync learning courses with Notion"
+	},
+	"name": {
+		"message": "Video Notes to Notion & AI Flashcard by Snipo"
+	},
+	"commands1": {
+		"message": "Timestamp | If not set, is mod+shift+k"
+	},
+	"commands2": {
+		"message": "Screenshots | If not set, is mod+shift+,"
+	},
+	"commands3": {
+		"message": "Pause | If not set, is mod+shift+space"
+	},
+	"commands4": {
+		"message": "Seek backward 5 sec in player | If not set, is mod+shift+8"
+	},
+	"commands5": {
+		"message": "Seek forward 5 sec in player | If not set, is mod+shift+9"
+	},
+	"commands6": {
+		"message": "Speed up the video | If not set, is mod+shift+0"
+	},
+	"commands7": {
+		"message": "Slow down the video | If not set, is mod+shift+7"
+	},
+	"commands8": {
+		"message": "Transcript range | If not set, mod+shift+h"
+	},
+	"commands9": {
+		"message": "Video clip | If not set, mod+shift+y"
+	}
+}

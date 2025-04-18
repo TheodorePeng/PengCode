@@ -1,0 +1,1 @@
+document.querySelector("html").dataset.snipoSessions=JSON.stringify({sessions:SS.serverBootstrap.pageData.unitsData.units[0].sessions,url:SS.serverBootstrap.pageData.videoPlayerData.baseUrl,id:SS.serverBootstrap.pageData.videoPlayerData.baseUrl.replace("https://www.skillshare.com/",""),cover:SS.serverBootstrap.pageData.syllabusData.classImageUrl});

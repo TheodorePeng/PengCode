@@ -1,0 +1,2 @@
+[console_scripts]
+evp = video2ppt:main
