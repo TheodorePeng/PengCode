@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name           searchEngineJump 搜索引擎快捷跳转
-// @author         NLF&锐经(修改) & iqxin(修改)
+// @author         NLF&锐经(修改) & iqxin(修改) 
 // @contributor    iqxin
 // @description    方便的在各个搜索引擎之间跳转,增加可视化设置菜单,能更友好的自定义设置,修复百度搜索样式丢失的问题
 // @version        5.26.7
@@ -26,8 +26,8 @@
 // @grant       GM_xmlhttpRequest
 // @run-at      document-end
 
-// @downloadURL https://update.greasyfork.org/scripts/27752/searchEngineJump%20%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%BF%AB%E6%8D%B7%E8%B7%B3%E8%BD%AC.user.js
-// @updateURL https://update.greasyfork.org/scripts/27752/searchEngineJump%20%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%BF%AB%E6%8D%B7%E8%B7%B3%E8%BD%AC.meta.js
+// @downloadURL https://github.com/TheodorePeng/PengCode/raw/refs/heads/main/TampermonkeyScript-Peng/searchEngineJump%20%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%BF%AB%E6%8D%B7%E8%B7%B3%E8%BD%AC-5.26.7.user.js
+// @updateURL https://github.com/TheodorePeng/PengCode/raw/refs/heads/main/TampermonkeyScript-Peng/searchEngineJump%20%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%BF%AB%E6%8D%B7%E8%B7%B3%E8%BD%AC-5.26.7.user.js
 // ==/UserScript==
 
 (function () {
@@ -82,11 +82,11 @@
                     // },
                     keyword: '//textarea[@name="q"]',
                     where: 'afterBegin',
-                },
+                
                 // 修改源网页用来适应跳转栏（可选）
                 // stylish: 'body.vasq #hdtbMenus.hdtb-td-o{top:100px !important;} #hdtbMenus{top:92px;margin-top:30px;}'
                 stylish: '#appbar.hdtb-ab-o{height:0px !important;} #hdtbMenus{position:unset}'
-            },
+            
             {name: "google-hash-query",// 不刷新页面显示搜索结果的google
                 enabled: true,
                 url: /^https?:\/\/www\.google(?:\.[A-z]{2,3}){1,2}\/[^#]*#(?:&?q=|.+?&q=).+/,
@@ -106,11 +106,11 @@
                     keyword: function () {
                         var input = document.getElementById('lst-ib');
                         if (input) return input.value;
-                    },
+                    
                     where: 'beforeBegin',
-                },
+                
                 stylish: 'body.vasq #hdtbMenus.hdtb-td-o{top:100px !important}'
-            },
+            
             {name: "百度网页搜索",
                 url: /^https?:\/\/www\.baidu\.com\/(?:s|baidu)/,
                 enabled: true,
@@ -140,9 +140,9 @@
                     keyword: 'css;input#kw',
                     target: 'css;#s_tab',
                     where: 'afterEnd',
-                },
+                
                 stylish:".headBlock,.se_common_hint{display:none !important} #wrapper>.result-molecule{z-index:300 !important} #searchTag{position:unset}"
-            },
+            
             {name: "必应网页搜索",
                 url: /^https?:\/\/[^.]*\.bing\.com\/search/,
                 enabled: true,
@@ -163,8 +163,8 @@
                     keyword: 'css;#sb_form_q',
                     target: 'css;#b_content',
                     where: 'beforeBegin',
-                },
-            },
+                
+            
             {name: "DDG",
                 url: /^https?:\/\/duckduckgo\.com\/*/i,
                 enabled: true,
@@ -176,8 +176,8 @@
                     keyword: '//input[@name="q"]',
                     target: 'css;.results--main',
                     where: 'beforeBegin',
-                },
-            },
+                
+            
             {name:"雅虎网页搜索",
                 url:/^https?:\/\/search\.yahoo\.com\/search/i,
                 engineList:"web",
@@ -190,8 +190,8 @@
                     keyword:'css;#yschsp',
                     target:'css;#horizontal-bar',
                     where:'afterBegin',
-                },
-            },
+                
+            
             {name:"雅虎日本网页搜索",
                 url:/^https?:\/\/search\.yahoo\.co\.jp\/search/i,
                 engineList:"web",
@@ -208,8 +208,8 @@
                     keyword:'//input[@name="p"]',
                     target:'css;.Header__inner',
                     where:'afterEnd',
-                },
-            },
+                
+            
             {name:"台湾雅虎网页搜索",
                 url:/^https?:\/\/tw\.search\.yahoo\.com\/search/i,
                 engineList:"web",
@@ -223,8 +223,8 @@
                     keyword:'css;#yschsp',
                     target:'css;#results',
                     where:'afterBegin',
-                },
-            },
+                
+            
             {name:"searx",
                 url:/^https?:\/\/searx\.me\/\?q/i,
                 engineList:"web",
@@ -237,8 +237,8 @@
                     keyword:'css;#q',
                     target:'css;#categories',
                     where:'beforeBegin',
-                },
-            },
+                
+            
             {name: "搜狗",
                 url: /^https?:\/\/www\.sogou\.com\/(?:web|s)/,
                 enabled: true,
@@ -259,9 +259,9 @@
                     keyword: "css;#upquery",
                     target: "css;#wrapper",
                     where: "afterBegin",
-                },
+                
                 stylish:"#float_uphint{display:none;}",
-            },
+            
             {name:"yandex",
                 url:/^https?:\/\/yandex\.(?:com|ru)\/search/i,
                 engineList:"web",
@@ -275,9 +275,9 @@
                     keyword:'css;.input__control',
                     target:'css;.main',
                     where:'beforeBegin',
-                },
+                
                 stylish:".main .main__center{padding-top:0px}"
-            },
+            
             {name: "google网页分类搜索",
                 enabled: true,
                 url: /^https?:\/\/www\.google(?:\.[A-z]{2,3}){1,2}\/[^?]+\?(?:tbm=)(?:&?q=|(?:[^#](?!&tbm=))+?&q=)(?:.(?!&tbm=))*$/,
@@ -291,9 +291,9 @@
                     target: 'css;#appbar',
                     keyword: '//input[@name="q"]',
                     where: 'beforeBegin',
-                },
+                
                 stylish: 'body.vasq #hdtbMenus.hdtb-td-o{top:100px !important}'
-            },
+            
             {name: "startpage",
                 enabled: true,
                 url:/^https?:\/\/(www\.)?startpage\.com\/[a-zA-Z]{2,3}\/search/,
@@ -307,8 +307,8 @@
                     keyword: '//input[@name="query"]',
                     // where: 'beforeBegin',
                     where: 'afterBegin',
-                },
-            },
+                
+            
             {name: "startpage2",
                 enabled: true,
                 url:/^https?:\/\/www\.startpage\.com\/do\/asearch/,
@@ -326,9 +326,9 @@
                     keyword: '//input[@name="query"]',
                     // where: 'beforeBegin',
                     where: 'beforeEnd',
-                },
+                
                 stylish:".layout-web__body{margin-top:110px;}",
-            },
+            
             {name: "infinitynewtab",
                 enabled: true,
                 url:/^https?:\/\/google\.infinitynewtab\.com\/\?q/i,
@@ -342,8 +342,8 @@
                     // keyword: 'css;input.gsc-input',
                     keyword: '//input[@name="search"]',
                     where: 'afterBegin',
-                },
-            },
+                
+            
             {name: "ecosia",
                 enabled: true,
                 url:/^https?:\/\/www\.ecosia\.org\/search\?/i,
@@ -358,8 +358,8 @@
                     target: 'css;.mainline',
                     keyword: '//input[@name="q"]',
                     where: 'afterBegin',
-                },
-            },
+                
+            
             {name: "f搜",
                 enabled: true,
                 url: /^https?:\/\/fsoufsou\.com\/search/,
@@ -380,11 +380,11 @@
                     keyword: function () {
                         var input = document.getElementById('search-input');
                         if (input) return input.value;
-                    },
+                    
                     where: 'beforeEnd',
-                },
+                
                 stylish: '.tabs-bottom-border{transform: translate(0, 32px); !important}'
-            },
+            
             {name: "brave",
                 enabled: true,
                 // https://search.brave.com/search?q=0
@@ -398,8 +398,8 @@
                     target: 'css;#search-main',
                     keyword: '//input[@name="q"]',
                     where: 'beforeBegin',
-                },
-            },
+                
+            
             {name: "neeva",
                 enabled: true,
                 // https://neeva.com/search?q=0
@@ -413,8 +413,8 @@
                     target: 'css;#search header',
                     keyword: '//input[@name="q"]',
                     where: 'afterEnd',
-                },
-            },
+                
+            
 
             // 知识
             {name: "百度百科词条",
@@ -430,8 +430,8 @@
                     keyword: 'css;#query',
                     target: 'css;.navbar-wrapper',
                     where: 'beforeBegin',
-                },
-            },
+                
+            
             {name: "百度百科搜索",
                 url: /^https?:\/\/baike\.baidu\.com\/search/,
                 engineList: "knowledge",
@@ -445,8 +445,8 @@
                     keyword: 'css;#query',
                     target: 'css;.header-wrapper',
                     where: 'afterEnd',
-                },
-            },
+                
+            
             {name: "百度文库",
                 url: /^https?:\/\/wenku\.baidu\.com\/search/i,
                 engineList: "knowledge",
@@ -461,11 +461,11 @@
                     keyword: function(){
                         var str = document.querySelector("#kw").value;
                         return str;
-                        },
+                        
                     target: 'css;.bd-wrap',
                     where: 'afterBegin',
-                },
-            },
+                
+            
             {name: "百度知道",
                 url: /^https?:\/\/zhidao\.baidu\.com\/search/i,
                 engineList: "knowledge",
@@ -480,8 +480,8 @@
                     keyword: 'css;#kw',
                     target: 'css;#header',
                     where: 'afterEnd',
-                },
-            },
+                
+            
             {name: "维基百科",
                 url: /^https?:\/\/\D{2,5}\.wikipedia\.org\/wiki/i,
                 engineList: "knowledge",
@@ -494,11 +494,11 @@
                     keyword: function(){
                         var url = window.location.href.substring(window.location.href.lastIndexOf("/")+1);
                         return decodeURIComponent(url);
-                        },
+                        
                     target: 'css;#mw-head',
                     where: 'afterBegin',
-                },
-            },
+                
+            
             {name: "知乎",
                 url: /^https?:\/\/www\.zhihu\.com\/search\?/i,
                 engineList: "knowledge",
@@ -526,9 +526,9 @@
                     keyword: 'css;.Input',
                     target:"css;.App-main .SearchTabs",
                     where: 'afterEnd', //beforeBegin
-                },
+                
                 stylish:".TopSearch.Card{margin:30px auto;}",
-            },
+            
             {name: "互动百科搜索页",
                 url: /^https?:\/\/so\.baike\.com\/doc/i,
                 engineList: "knowledge",
@@ -543,8 +543,8 @@
                     keyword: 'css;.ac_input',
                     target: 'css;.bk-head',
                     where: 'afterEnd',
-                },
-            },
+                
+            
             {name: "互动百科词条页",
                 url: /^https?:\/\/www\.baike\.com\/wiki/i,
                 engineList: "knowledge",
@@ -559,8 +559,8 @@
                     keyword: 'css;.ac_input',
                     target: 'css;.bk-head',
                     where: 'afterEnd',
-                },
-            },
+                
+            
             {name: "豆丁文档",
                 url: /^https?:\/\/www\.docin\.com\/search\.do/,
                 engineList: "knowledge",
@@ -576,8 +576,8 @@
                     keyword: 'css;#topsearch',
                     target: 'css;.doc_hd_mini',
                     where: 'afterEnd',
-                },
-            },
+                
+            
             {name: "知乎(搜狗)",
                    url: /^https?:\/\/zhihu\.sogou\.com\/zhihu/,
                    enabled: true,
@@ -592,9 +592,9 @@
                       keyword: 'css;#upquery',
                       target: 'css;#header',
                       where: 'afterEnd',
-                   },
+                   
                    stylish: '.header{ margin-bottom: 5px; }'
-            },
+            
             {name: "微信搜狗",
                 url: /^https?:\/\/weixin\.sogou\.com\/weixin\?/,
                 enabled: true,
@@ -605,8 +605,8 @@
                     keyword: "//input[@name='query']",
                     target: "css;.header-box",
                     where: "afterEnd",
-                },
-            },
+                
+            
             {name: "Quora",
                        // https://www.quora.com/search?q=china
                 url:  /^https?:\/\/www\.quora\.com\/search\?/i,
@@ -618,11 +618,11 @@
                     keyword: function(){
                         var url = window.location.href.substring(window.location.href.lastIndexOf("=")+1);
                         return decodeURIComponent(url);
-                        },
+                        
                     target: "css;.SiteHeader",
                     where: "beforeEnd",
-                },
-            },
+                
+            
             {name: "stackoverflow",
                 url: /^https?:\/\/stackoverflow\.com\/search\?/i,
                 enabled: true,
@@ -633,8 +633,8 @@
                     keyword: "//input[@name='q']",
                     target: "css;.top-bar",
                     where: "afterEnd",
-                },
-            },
+                
+            
 
 
             // 视频网站
@@ -652,8 +652,8 @@
                     keyword: 'css;#headq',
                     target: 'css;.sk_container',
                     where: 'beforeBegin',
-                },
-            },
+                
+            
             {name: "土豆",
                 url: /^https?:\/\/www\.soku\.com\/t\/nisearch\//,
                 enabled: true,
@@ -668,8 +668,8 @@
                     keyword: 'css;#headq',
                     target: 'css;body > .sk_container',
                     where: 'beforeBegin',
-                },
-            },
+                
+            
             {name: "哔哩哔哩",
                 url: /^https?:\/\/search\.bilibili\.com\/all/,
                 enabled: true,
@@ -690,7 +690,7 @@
                         } else{
                             return document.querySelector(".search-input-el").value;
                         }
-                    },
+                    
                     // target: 'css;.search-input',
                     target: function(){
                         if(document.querySelector(".head-contain")){
@@ -698,10 +698,10 @@
                         } else{
                             return  document.querySelector(".search-input");
                         }
-                    },
+                    
                     where: 'afterEnd',
-                },
-            },
+                
+            
             {name: "AcFun",
                 url: /^https?:\/\/www\.acfun\.cn\/search/,
                 enabled: true,
@@ -716,11 +716,23 @@
                     keyword: 'css;#search-text--standalone',
                     target: 'css;.search__main__container',
                     where: 'afterEnd',
-                },
-            },
-{name: "YouTube", url: /^https?:\/\/www\.youtube\.com\/results/, enabled: true, engineList: "video", fixedTop:56, style: "z-index:999; position:fixed; top:60px; left:0; right:0; background:#fff; padding:5px 0; text-align:center;", insertIntoDoc: { keyword: function() { const params = new URLSearchParams(window.location.search); return decodeURIComponent(params.get("search_query") || ""); }, target: "css;ytd-app", where: "afterBegin", }, },
-                },
-            },
+                
+            {name: "YouTube", 
+                url: /^https?:\/\/www\.youtube\.com\/results/, 
+                enabled: true, 
+                engineList: "video", 
+                fixedTop: 56, 
+                style: "z-index:999; position:fixed; top:60px; left:0; right:0; background:#fff; padding:5px 0; text-align:center;", 
+                insertIntoDoc: { 
+                    keyword: function() { 
+                        const params = new URLSearchParams(window.location.search); 
+                        return decodeURIComponent(params.get("search_query") || ""); 
+                     
+                    target: "css;ytd-app", 
+                    where: "afterBegin", 
+                }
+            
+            
             {name: "niconico",
                 url: /^https?:\/\/www\.nicovideo\.jp\/search\//,
                 enabled: true,
@@ -734,8 +746,8 @@
                     keyword: 'css;#search_united',
                     target: 'css;.tagListBox',
                     where: 'beforeBegin',
-                },
-            },
+                
+            
             {name: "Iqiyi",
                  url: /^https?:\/\/so\.iqiyi\.com\/so\/q/,
                  enabled: true,
@@ -749,8 +761,8 @@
                     keyword: 'css;#data-widget-searchword',
                     target: 'css;.mod_search_header',
                     where: 'afterEnd'
-                 },
-            },
+                 
+            
             {name: "腾讯视频",
                     url: /^https?:\/\/v\.qq\.com\/x\/search/i,
                     engineList: "video",
@@ -761,8 +773,8 @@
                        keyword: 'css;#keywords',
                        target: 'css;.site_head_simple',
                        where: 'afterEnd',
-                    },
-            },
+                    
+            
             {name: "樱花动漫",
                 url: /^https?:\/\/www\.imomoe\.ai\/search/,
                 engineList: "video",
@@ -775,8 +787,8 @@
                     keyword: '//input[@name="searchword"]',
                     target: 'css;.head',
                     where: 'afterEnd',
-                },
-            },
+                
+            
 
 
             // 音乐
@@ -792,8 +804,8 @@
                     keyword: 'css;#ww',
                     target: 'css;.nav-wrapper',
                     where: 'beforeBegin',
-                },
-            },
+                
+            
             {name: "一听音乐",
                 url: /^https?:\/\/so\.1ting\.com\/all\.do/,
                 enabled: true,
@@ -807,8 +819,8 @@
                     keyword: 'css;#keyword',
                     target: 'css;.nav',
                     where: 'beforeBegin',
-                },
-            },
+                
+            
             {name: "xiami",
                 url: /^https?:\/\/www\.xiami\.com\/search/,
                 enabled: true,
@@ -821,8 +833,8 @@
                     keyword: 'css;#search_text',
                     target: 'css;.search_result',
                     where: 'beforeBegin',
-                },
-            },
+                
+            
             {name: 'QQ音乐',
                 url: /^https?:\/\/s\.music\.qq\.com/i,
                 enabled: true,
@@ -836,8 +848,8 @@
                     keyword: 'css;#keyword',
                     target: 'css;.mod_soso',
                     where: 'afterEnd',
-                },
-            },
+                
+            
             {name: '网易云音乐',
                 url: /^https?:\/\/music\.163\.com\/.*?#\/search/i,
                 enabled: true,
@@ -851,8 +863,8 @@
                     keyword: (function(){return decodeURI(document.URL.match(/s=(.+?)(&|$)/)[1]);}),
                     target: 'css;.m-subnav.m-subnav-up.f-pr.j-tflag',
                     where: 'afterEnd',
-                },
-            },
+                
+            
             {name: '音悦台',
                 url: /^https?:\/\/so\.yinyuetai\.com\/\?keyword/,
                 enabled: true,
@@ -866,11 +878,11 @@
                     keyword:function(){
                         var url = window.location.href.substring(window.location.href.lastIndexOf("=")+1);
                         return decodeURIComponent(url);
-                    },
+                    
                     target: 'css;.content',
                     where: 'afterEnd'
-                },
-            },
+                
+            
 
 
             // 图片
@@ -887,8 +899,8 @@
                     keyword: 'css;input#kw',
                     target: 'css;.s_tab',
                     where: 'afterEnd',
-                },
-            },
+                
+            
             {name: "谷歌图片",
                 url: /^https?:\/\/\w{2,10}\.google(?:\.\D{1,3}){1,2}\/[^?]+\?.*&tbm=isch/i,
                 enabled: true,
@@ -904,8 +916,8 @@
                     target: 'css;.ndYZfc',
                     where: 'afterBegin',
                     // where: 'beforeEnd',
-                },
-            },
+                
+            
             {name: "必应图片",
                 url: /^https?:\/\/.*\.bing\.com\/images\/search/i,
                 enabled: true,
@@ -918,8 +930,8 @@
                     keyword: 'css;#sb_form_q',
                     target: 'css;#rfPaneIn',
                     where: 'afterBegin',
-                },
-            },
+                
+            
             {name: "flickr",
                 url: /^https?:\/\/www\.flickr\.com\/search\//,
                 engineList: "image",
@@ -941,11 +953,11 @@
                                 return decodeURIComponent(m[1]);
                             }
                         }
-                    },
+                    
                     target: 'css;.using-slender-advanced-panel',
                     where: 'afterBegin'
-                    },
-            },
+                    
+            
             {name: "pixiv",
                 url: /^http:\/\/www\.pixiv\.net\/search\.php/i,
                 engineList: "image",
@@ -959,8 +971,8 @@
                     keyword: 'css;input[name=word]',
                     target: 'css;body',
                     where: 'beforeBegin'
-                },
-            },
+                
+            
             {name: "花瓣",
                 url: /^https?:\/\/huaban\.com\/search\/\?/,
                 engineList: "image",
@@ -973,8 +985,8 @@
                     keyword: 'css;#query',
                     target: 'css;#search_switch',
                     where: 'afterEnd'
-                },
-            },
+                
+            
             {name: "Pinterest",
                 url: /^https?:\/\/www\.pinterest\.com\/search\//,
                 engineList: "image",
@@ -987,8 +999,8 @@
                     keyword: '//input[@name="q"]',
                     target: 'css;.headerContainer',
                     where: 'afterEnd'
-                },
-            },
+                
+            
 
 
             // 资源下载
@@ -1005,8 +1017,8 @@
                     keyword: 'css;.inputbox',
                     target: 'css;#SearchResults',
                     where: 'beforeBegin',
-                },
-            },
+                
+            
             {
                 name: '动漫花园',
                 url: /^https?:\/\/share\.dmhy\.org\/topics\/list\?keyword\=/i,
@@ -1019,8 +1031,8 @@
                     keyword: 'css;#keyword',
                     target: 'css;.table.clear',
                     where: 'beforeBegin',
-                },
-            },
+                
+            
             {
                 name: 'ED2K',
                 url: /^https?:\/\/www\.ed2000\.com\/filelist\.asp/i,
@@ -1030,8 +1042,8 @@
                     keyword: 'css;.searchtxt',
                     target: 'css;.topsearch',
                     where: 'afterEnd',
-                },
-            },
+                
+            
             {name: "人人影视",
                 url: /^https?:\/\/www\.zimuzu\.tv\/search\//,
                 engineList: "download",
@@ -1044,8 +1056,8 @@
                     keyword: '//input[@name="q"]',
                     target: 'css;.Header',
                     where: 'afterEnd',
-                },
-            },
+                
+            
             {name: "subHD字幕",
                 url: /^https?:\/\/subhd\.com\/search/i,
                 engineList: "download",
@@ -1060,8 +1072,8 @@
                     keyword: 'css;#sn',
                     target: 'css;.navbar.navbar-inverse',
                     where: 'afterEnd',
-                },
-            },
+                
+            
 
 
             //翻译词典
@@ -1076,8 +1088,8 @@
                     keyword: 'css;.D5aOJc ',
                     target: 'css;.MOkH4e ',
                     where: 'afterBegin',
-                },
-            },
+                
+            
             {name: "百度翻译",
                 url: /^https?:\/\/fanyi\.baidu\.com/i,
                 enabled: true,
@@ -1088,11 +1100,11 @@
                 insertIntoDoc: {
                     keyword: function(){
                         return document.querySelector("#baidu_translate_input").value;
-                    },
+                    
                     target: 'css;.inner',
                     where: 'afterBegin',
-                },
-            },
+                
+            
             {name: "必应词典",
                 url: /^https?:\/\/.*\.bing\.com\/dict\/search\?q\=/i,
                 enabled: true,
@@ -1106,8 +1118,8 @@
                     keyword: 'css;#sb_form_q',
                     target: 'css;#b_header',
                     where: 'beforeEnd',
-                },
-            },
+                
+            
             {name: "有道翻译",
                 url: /^https?:\/\/dict\.youdao\.com\/search/i,
                 enabled: true,
@@ -1122,8 +1134,8 @@
                     keyword: 'css;#query',
                     target: 'css;.c-topbar-wrapper',
                     where: 'beforeEnd',
-                },
-            },
+                
+            
             {name: "有道翻译2",
                 url: /^https?:\/\/dict\.youdao\.com\/w/i,
                 enabled: true,
@@ -1138,8 +1150,8 @@
                     keyword: 'css;#query',
                     target: 'css;.c-topbar-wrapper',
                     where: 'beforeEnd',
-                },
-            },
+                
+            
             {name: "海词",
                url: /^https?:\/\/dict\.cn\/./,
                enabled: true,
@@ -1170,8 +1182,8 @@
                     keyword: '//input[@type="search"]',
                     target: 'css;.Search_input__1qgiU',
                     where: 'afterEnd',
-                },
-            },
+                
+            
 
             // 购物
             {name: "淘宝搜索",
@@ -1194,11 +1206,11 @@
                                 return decodeURIComponent(m[1]);
                            }
                         }
-                    },
+                    
                     target: 'css;.header-wraper',
                     where: 'afterEnd',
-                },
-            },
+                
+            
             {name: "天猫超市搜索",
                 url: /^https?:\/\/list\.tmall\.com\/search_product\.htm.*from=chaoshi/i,
                 enabled: true,
@@ -1216,8 +1228,8 @@
                     keyword: 'css;#mq',
                     target: 'css;.headerCon',
                     where: 'beforeBegin',
-                },
-            },
+                
+            
             {name: "天猫搜索",
                 url: /^https?:\/\/list\.tmall\.com\/search_product\.htm/i,
                 enabled: true,
@@ -1231,8 +1243,8 @@
                     keyword: 'css;#mq',
                     target: 'css;.headerCon',
                     where: 'beforeBegin',
-                },
-            },
+                
+            
             {name: "京东",
                 url: /^https?:\/\/search\.jd\.com\/Search/,
                 enabled: true,
@@ -1246,8 +1258,8 @@
                     keyword: 'css;#key',
                     target: 'css;#o-header-2013',
                     where: 'afterEnd',
-                },
-            },
+                
+            
             {name: "苏宁",
                 url: /^https?:\/\/search\.suning\.com/i,
                 enabled: true,
@@ -1261,8 +1273,8 @@
                     keyword: 'css;#searchKeywordsHidden',
                     target: 'css;.ng-toolbar',
                     where: 'afterEnd',
-                },
-            },
+                
+            
             {name: "1号店",
                 url: /^https?:\/\/search\.yhd\.com\/c0-0\/k/i,
                 enabled: true,
@@ -1276,8 +1288,8 @@
                     keyword: 'css;#keyword',
                     target: 'css;#global_top_bar',
                     where: 'afterEnd',
-                },
-            },
+                
+            
             {name: "什么值得买",
                // http://search.smzdm.com/?c=home&s=%E8%A5%BF%E6%B8%B8%E8%AE%B0
                 url: /^https?:\/\/search\.smzdm\.com\/\?/i,
@@ -1292,8 +1304,8 @@
                     keyword: 'css;#J_search_input',
                     target: 'css;.search-inner',
                     where: 'afterEnd',
-                },
-            },
+                
+            
             {name: "亚马逊",
             // https://www.amazon.cn/s?k=%E4%BA%9A%E9%A9%AC%E9%80%8A%E7%BD%91
              url: /^https?:\/\/www\.amazon\.cn\/s\?k/i,
@@ -1306,8 +1318,8 @@
                  keyword: 'css;#twotabsearchtextbox',
                  target: 'css;.sg-row',
                  where: 'afterBegin',
-                },
-            },
+                
+            
              {name: "1688",
             // https://s.1688.com/selloffer/offer_search.htm?keywords=%
              url: /^https?:\/\/s\.1688\.com\/selloffer\/offer_search/i,
@@ -1322,8 +1334,8 @@
                  keyword: '//input[@name="keywords"]',
                  target: 'css;.header-container',
                  where: 'afterEnd',
-                },
-            },
+                
+            
             {name: "慢慢买",
             // http://ss.manmanbuy.com/Default.aspx?key=%s
              url: /^https?:\/\/ss\.manmanbuy\.com\/Default\.aspx\?key/i,
@@ -1336,8 +1348,8 @@
                  keyword: '//input[@name="key"]',
                  target: 'css;#resultcomment',
                  where: 'beforeBegin',
-                },
-            },
+                
+            
 
 
             //社交
@@ -1355,8 +1367,8 @@
                     keyword: 'css;.searchInp_form',
                     target: 'css;#pl_common_searchTop',
                     where: 'afterEnd',
-                },
-            },
+                
+            
             {name: "百度贴吧",
                 url: /^https?:\/\/tieba\.baidu\.com\/f\/search/i,
                 enabled: true,
@@ -1371,8 +1383,8 @@
                     keyword: 'css;#wd1',
                     target: 'css;.s_container.clearfix',
                     where: 'beforeBegin',
-                },
-            },
+                
+            
             {name: "豆瓣1",
                 url: /^https?:\/\/(movie|music|book)\.douban\.com\/subject_search?/,
                 enabled: true,
@@ -1387,8 +1399,8 @@
                     keyword: 'css;#inp-query',
                     target: 'css;.nav-secondary',
                     where: 'afterEnd'
-                },
-            },
+                
+            
             {name: "豆瓣2",
                 url: /^https?:\/\/www\.douban\.com\/search/i,
                 enabled: true,
@@ -1403,8 +1415,8 @@
                     keyword: 'css;#inp',
                     target: 'css;#db-global-nav',
                     where: 'afterEnd'
-                },
-            },
+                
+            
 
 
             //学术搜索列表
@@ -1422,8 +1434,8 @@
                     keyword: 'css;input#kw',
                     target: 'css;#head_wr',
                     where: 'afterEnd',
-                },
-            },
+                
+            
             {name: "谷歌学术",
                 enabled: true,
                 url: /^https?:\/\/scholar\.google(?:\.\D{1,3}){1,2}\/scholar\?/,
@@ -1437,7 +1449,7 @@
                     keyword: '//input[@name="q"]',
                     where: 'beforeBegin'
                 }
-            },
+            
             {name: "cnki",
                 url: /^http:\/\/search\.cnki\.net\/search\.aspx/i,
                 enabled: true,
@@ -1452,8 +1464,8 @@
                     keyword:'css;#txtSearchKey',
                     target:'css;.main',
                     where:'afterBegin',
-                },
-            },
+                
+            
             {name: "知网",
                 enabled: true,
                 url: /^http:\/\/epub\.cnki\.net\/kns\/brief\/default_result\.aspx/i,
@@ -1469,7 +1481,7 @@
                     target:'css;#TopSearchBar',
                     where:'afterEnd',
                 }
-            },
+            
             {name: "万方",
                 enabled: true,
                 url: /^https?:\/\/s\.g\.wanfangdata\.com\.cn\/Paper\.aspx/i,
@@ -1485,7 +1497,7 @@
                     target:'css;#content',
                     where:'beforeBegin',
                 }
-            },
+            
             {name: "EBSCO",
                 enabled: true,
                 url: /^http:\/\/.*?ebscohost\.com\/.*?results/i,
@@ -1500,7 +1512,7 @@
                     target:'css;#findFieldOuter',
                     where:'afterend',
                 }
-            },
+            
             {name: "Springer",
                 enabled: true,
                 url: /^http:\/\/link\.springer\.com\/search\?query=/i,
@@ -1515,7 +1527,7 @@
                     target:'css;#content',
                     where:'beforeBegin',
                 }
-            },
+            
             {name: "JSTOR",
                 enabled: true,
                 url: /^https?:.*?jstor.org\/action\/doAdvancedSearch/i,
@@ -1530,7 +1542,7 @@
                     target:'css;.tabs-search-results',
                     where:'beforeBegin',
                 }
-            },
+            
 
             //html 列表
             {name: "w3c",
@@ -1547,11 +1559,11 @@
                     keyword:function(){
                                 var url = window.location.href.substring(window.location.href.lastIndexOf("=")+1);
                                 return decodeURIComponent(url);
-                            },
+                            
                     target:'css;.navigation',
                     where:'afterEnd',
                 }
-            },
+            
             {
                 name: "GitHub",
                 enabled:true,
@@ -1566,7 +1578,7 @@
                    target:'css;.Header',
                    where:'afterEnd',
                }
-            },
+            
             {
                 name: "MDN",
                 enabled:true,
@@ -1580,11 +1592,11 @@
                    keyword:function(){
                                 var url = window.location.href.substring(window.location.href.lastIndexOf("=")+1);
                                 return decodeURIComponent(url);
-                            },
+                            
                    target:'css;.results-search-form',
                    where:'afterEnd',
                }
-            },
+            
 
             // 其他补充， 这个脚本将会朝重型方向发展，如果嫌弃代码过多，可自行删减无用代码
             {
@@ -1605,7 +1617,7 @@
                    keyword: 'css;input.gsc-input',
                    where: 'beforeBegin',
                }
-            },
+            
             {
                 name: "头条搜索",
                 //https://so.toutiao.com/search
@@ -1623,7 +1635,7 @@
                    keyword: '//input[@type="search"]',
                    where: 'beforeEnd',
                }
-            },
+            
             {
                 name: "抖音搜索",   
                 url:/^https?:\/\/www\.douyin\.com\/search/,
@@ -1642,9 +1654,9 @@
                    keyword: function () {
                     var input = document.querySelector('input[type="text"]');
                     if (input) return input.value;
-                },
+                
                    where: 'afterBegin',
-                },
+                
                 stylish:`.J122YuOM{padding-top:14px}
                     body {
                         --font-color-qxin:#ccc;
@@ -1662,7 +1674,7 @@
                         margin-top:10px;
                     }
                     `,
-            },
+            
             //  用户补充: kidzgy
             //  https://greasyfork.org/zh-CN/scripts/27752/discussions/90497
             {
@@ -1680,9 +1692,9 @@
                 keyword: 'css;#searchKey',
                 target: 'css;.app-nheader',
                 where: 'AfterEnd',
-                },
+                
                 stylish: ' .bigsearch-nav.fixed > .nav-wrap { position: static !important; }',
-            },
+            
             {
                 name: "天眼查",
                 url: /^https?:\/\/www\.tianyancha\.com\/(?:search|company)/,
@@ -1698,9 +1710,9 @@
                 keyword: 'css;#header-company-search',
                 target: 'css;.tyc-header',
                 where: 'AfterEnd',
-                },
+                
                 stylish: '#web-content.mt122{margin-top:90px !important} .search-bar{position:static !important}',
-            },
+            
 
 
             // 回家没网,用8090端口离线测试使用。
@@ -2351,55 +2363,55 @@
                     url: 'https://fnd.io/#/us/search?mediaType=all&term=%s',
                     favicon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADtElEQVR4nL2XTYtcRRSGn1O3enp6mJk4TBDGIFHpjQtdGpigIApq/AGKCCKBrN2Jf0AwCC6EiOLKnYIKKhJcSBQMgiaKX6DmQwnGRNOrgUz6457joqpuV/d0T/fViRca7r1V1U+des97bpUc/+IBM8AUDADBCPdKuNK94TAbPqvlbWRtgimoxGcFQyglcFJ/kQY+DJKIchgaQADZ/SgA1PI22QG3MbjKcHwaA4QJkKJDY6NmHUfhThpgRt96lNrHRABBxI/AtYKHlVAL/6FpwjFEvxOe/1yQwQTHAte6Z9jfOsTda5vcttJmpbmfgoK/ty/xyaW3KEvFxEbgpcTVGYMrIAbeMs0nwQuaXO2d5JHbT/DwXW/T8quk6+fOWd4/9yoXtr5nqdgHInPAg0xqhhPwk5c8Rq6O5dYGz29epyFNSisB+ObK57z+4xMsSJtFv8KyX0OZN3JBLeYKkiaQSxDgg3LA5oGnOdI+hpqCCDcGW7x4+km6vZLVxj30taRf9iZovlvkmQsApxMiN3UcPvAMR9rHMAwnwk9/fclzpw6iWkBhDGK2jcNLkYkJl2ybeOnew07Nb1k6yGPtoxiGIHz62zt8cOEV1hYOMbBeWLEJ2b675qPwFLTPtceEq92TvHD4BmqKiHDq93f5+OIJvGtVGs4Pt6nw4AIJEqTlAc/jd7yJo4Eg/NI5w3vnXwJxMcOn+bxe5AqYOUrA5eW10/2ah+58CjOlW17n+Nn7WCxWd4XX0TyHp/cur3AbSw+yULQonOflr45y6+Kj0V51ln125Pm3w+e1/d71+zGMXzvfcm37Mr7waK2E213zHK6W2VBN6Zc9NpbbCMJrPzxLs7E4FT6P5uNfS83hMXoT8KGTo2/b7Guuc3nrIr3BAvgSdLLP54ncxiK3fEUMTAQ1wQ1tKDjxfHj+DZYa6zXg82tevY+Jq1ZJIDhp0Nn+k+86n6GqNSKfnu06CR73Dum5coHgOX3lI4SCkvI/+1zzZSeNHYWTV0IV4Y+tc/iiuSfZPq55CiIvw7EQUfm83ve8nubj8NBXcPVr+3wVbprmVd98T/hvfT66SZ2g+bTIq12Y4KsZ77HPZ8PDs5sN30PNMzgxCDc8NNwcn0+DD+tAfmioEfk8Pp8FB/DlRPje+DyHMwavkjCdCf8PzcfbFYZbspvh82nwcAlgqRTn8LgDmgWvYTXG2kmHWRG8SGM4JwMnwyrl4glXLBytXUw2iXkjhNItkv449CVOIvk8vorvLExADMHxD+83EPzS100KAAAAAElFTkSuQmCC',
                     blank:true
-                },
+                
                 {
                     name: ' PP助手',
                     url: 'https://www.25pp.com/ios/search_app_0/%s',
                     favicon: 'data:image/x-icon;base64,AAABAAEAEBAAAAAAIABTAgAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAAQAAAAEAgGAAAAH/P/YQAAAhpJREFUeJydk81LVGEUxn/vvaMz45SjlZpfWBpUkyj06aIWFVGBCG0EN22CFi2CNtHSfZsyyFWL/ANCgkDCylWEGzcKLSKn8qOaGUbHdO69733P2yK6OemifOBsXh5+7zmc8+B5XkZr/cIYE4qI/ZcyxgRa6/EgCA4ThuFLuwOJiIRhOK5ERCulYmzSQlHz+v0ac4seAMdaE1w4spu2+qrNNkQkUCJilVLR48RsieHny8wuevihBSAeU3S3Jhke2M+V7trIa62lAvDu4zrXn3wiWwiIxxStddUALK4E+KHlwN5qxm500NeZigBR69pYRqfyZAsB6aTL3ctNXDueRgHPZla5P/GNbCFgdCrPiY4aqtxfnzq/AUsrmun5DSzQ35Nm6Ew9DydzPJjMMXS6nv6eNADT8xssrehojKiDUtnwwzM4CnrbE8znfZ6+LQAweKqOoy0JFLDuG9Y82QqwFiygAAdFb3uSO5cacZSiqyHO4zd5BKhNutTVuFsB/FkEYi21CZfbFxtYKGpGXuWYmCuhgLOHdtGcjm0D2CTXUWTzATfHPjO37FFcN4RiyTQnuHV+H66jtgHYSsjXkmbmS5nVsiFV7XDuYIrhgWZ62pIVvghQFVM4SmEEYq7iZEcNj4baWChqMi0J+jpT7Em5/K3olMtaGJnM8eG7z72rTXQ1xrebrkIiElSEyYi1oZH/ChO+72fCMNxxnH8CVx+vwwyO9nUAAAAASUVORK5CYII=',
                     blank:true
-                },
+                
                 {
                     name: 'Google Play',
                     url: 'https://play.google.com/store/search?q=%s',
                     favicon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAEg0lEQVR4nMWXXUwcVRTH/3d2IVblI2FLiolFUkzIFNFIH5o+mGpc+qY8GGJ88sFEU22DpIGqiBSIqcZoqpY2xFQ+hALbsqgopEQxhkQhjaUWJxhadE2hsizLxy77wdy5x4fdgQvd5UtIT3Iyc2d37v93/vfc2VlGRAz3MKzyYN/YTLJ18exJYTUWbQkprb9kFo/sNACTHXhgABXC2luUmHRFtVgtPClxV+2eFFvVQNLr3p0CUORBiJATCtnVcLBAC1sMqxv+4yMLEyOZnuriV1FnjTfJtgEIBVYoQNhvV3V/gUYWhiDTbePk+7h15vbvWb4PnttRACgAWOSoz9pVY9aukQWAhcGHcM4/YqYzdb6yJ2fho7ydAWAALMsQ3GtXDY9dEwpACiBAmKNgwZjhvWrzV9ceXDiTvr0AlugV86gANG1XaepZTf6aToZ12vC/NsTdIxm+mtIiOBK3B0CRkknnk3YV7pUQABAGT/1X+E53z98Yzgx++ML/B5BFTRfMZXHHhgAAP4Wzby9621N97/2YE/jkwNYBlBgpLQcm7SqmnokJIUCYE6HDt/jUr2lzpy48Gfj8oc0DyA7Eg5k8osIdGwIAOBmKF4GX9y/83AnXnnLg6fs2DiDtgLjJALiPxHUCAApDo8NNM44D0Cer4BrUcOfhlzYGgKiAmbL9q5ckjhOFwdFh57QzFxSdQwQegT7+Fe6k9MOdfWh9AHkHmOO1nJAgCgOjw06PM3epADI/IUDMHwK5+uFJqwOKlrbtyue7BYCI3myKE+KHiEIwaM/fX8edU848WJY1AWkuACAOkPcVeL6bgA2VdzsgVy8f1+mL9xsm4KwZWykW7y2DAM4DXJZceVMsiDWyprteK/vhooohWx7OPT68VL3ZA5KDBEA3cP76OE7HBlgtalYhN6bUiNVd9VpZb6tKxEDEQNd35y5BSA4QAdxAvy+IgwkZdDQ/n+I4IEPIjqxuPgZUfVOvlfa0qkIQiAACi+RQei5ql50wDPwd4njRupeeSs6iwVhyyyE33ypB2YFTzgbtRFdbpHIwCIpUScRAAqDfdufys/sHFzne/gvI2bWP2u8qNBrx33IURLrc3AnR3VHpaNRKvm5TibHIJSIwRQEhQkFgggtxYX7gwfL0M+TOjisQD8AUXn3OgIr2Rq2ks10FYyCiqGMRByAIhiJ+0hd5Seq1vqE1n7/rOiB3bxTi3bYm7c0Oh0pRcUVhIEFQGINBuBkGStMGejs3qLsBACnKm5u04ksO1VwJhSkQRCBgNkRGjeua59N8uspjTbU5AHO9pT38TlOzdrz9kkqMLcEZJLguxBdGKFiR8Wefx7YV5ZgAq+KtxmbtWKtDhcIgiMAAcBJXFjkv2ftHT9xfw60DSNafrG/Rjl28rBIYhCAYIE0nKs280fX9dgjHBhCCAwrKvmzR3mi5rJLCYBB5dRKVrhHf+cPUt6V13gyAVtrQph1t7lANxrjOjdpAWK98zNU1m7XdytFY8d/w0c+6kzvO1Z9ICOs8BL3liVvf3twh3dgA9yL+A+DGIba7GhlTAAAAAElFTkSuQmCC',
                     blank:true
-                },
+                
                 {
                     name: 'Microsoft Store',
                     url: 'https://www.microsoft.com/zh-cn/search/result.aspx?q=%s&form=MSHOME',
                     favicon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAWElEQVR4nO3WMQ2AUBAE0TkEkGABRQj4XjCDAFoQgwUSDHw8bEhoZvq7vHLrWeZO2LhfBbCexD+G9PCrBAgQIECAgN8BVmx3PCZoUwH0w0EiQIAAAQIE5L2DfQwqapCvzgAAAABJRU5ErkJggg==',
                     blank:true
-                },
+                
                 {
                     name: 'Alternativeto',
                     url: 'https://alternativeto.net/browse/search?q=%s',
                     favicon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADVklEQVR4nMWXXUhTYRjHf1aO3OJMt2k1FDFbCSFZkgaVeGEQgwIr+4CC6IMkow+I6qqL6iKCgqBAiEq6KK3bjC66iG6KPi0wrTWLNtZ07hyd+8jvLt4waefsbHPVHw68e5/nfZ7/ed73+Z93WZZjdyb5j5iTrGNscoLYQC+E+iGswEjst9GQA0YzmMxgysViys0sATkUAG83DEfVHUZi4hnwC39zAdiXYJlrmjkBORQA9xsA9tWtYnPNKlYuc7DAmjfl4w8qfP7qpbPHQ2PbI+jvg1AA2VGlW40svTMg97yFwT7untzDDmet7htFojGutj7g9O12MbGkOiGJWboRwzIAG2urdV0BTMYcTu1toLlpm5jwfUror09gfGwqcCo42OCk0lEIYUVsowb0D+G8PAgrtD58Qm31ct50uvD09vPy4xcAHPYCtq5fQ2mRPW7pifo6dl5sEV0j5adJYH4JhBURSAP3n73j1fXzcfNli4rEIDKguVZ3CyxSPpSuBItd9LvFLqoyDa9dXjq63XFrK8pKxSCsaMZPSgcsUj7y7GzR67JPTNokLjjXUb64GHuB9XeyFJGcECnf4et7ACodhZzdvQlnTVVaCVMmMD15c9M2DjY4M5I4KQLy6DB4uwBoP3soY289HYkPoecDjI1ysr42YXJ/UCESjWna0yIg/4jAYB/YJM4c2K7q4/b42H/+Ggu3HMf1zZcWgTlZYxrMh3oBuOBcp6qCHd1uVjSeSzqRVh7tLYiGAShfXKxq3n/plhj8oQmpQptAbAiApSWFcSZ/UOG1ywuGuTNKrkNAVEBN4/0B8YXEkNoHSg1JX8lUMTkxYwLaFZgtuKm1V0VZKdgkiAyKxyalLcXaBExmAN52fVY1tx/ZJUjYJDFOE9pbYJQgFKSzx8PayvI4s7OmiskMKKNuBRrbHqWtcjMiYDVKIFmhP8TRyzf/PQEA7A4w5HDj8UtOXWlJWAm3xxd3KXn49IUY/KqmGrKsh28kvJYHh6Pgfgfjo2CTaN6+gbrVFVP64Pb4ePy8g8Zr97SDFJVhzS1IjwBAcHQEfC4IBRM7msyiLaf/tizUTA5JCpE12wDFywhGQzAYEEl+KSU580Qic744NykiJSW0GiXRnhmE/h+Tv4yfzZcbwYt6jlUAAAAASUVORK5CYII=',
                     blank:true
-                },
+                
                 {
                     name: 'Github',
                     url: 'https://www.runningcheese.com/go/?url=https://github.com/search?q=%s',
                     favicon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAEmklEQVR4nK1XX2hbVRz+vnNv02xrIxu9N1mSlTiuIL26PdStiMjciyjq9ElkTwMfrMhEdOjDYEunU/BBJw71QXwUpA+WoQznZGygOOdEO6aCQWKbP7e5rptpM9qkyc+HJttdctNma76nnN/vnO/7zrknv3MO0SFs2w7Muu5uAfZAZAhAVMgoAFAkByAH8ncCJzYZxpnLly+XO+Hlah0ShhFZIA+LyF4AoQ79Fkl+HhQZS7uuc0cGLMvqnS8WDwJ4VUQ2dCh8KzlZAvBeXyh0NJVKLXZsoD7rCREZuRNhHyPngyLP+K1Gi4G4aW5bEvlagHg3xD1CGZ18IlMoTLY1kDCMyAJwodviXhNBYId3JVTjh2VZvQvkhFecwB8EviB55Q70rhEYJ/BLIyBAfIGcsCyrt8XAfLF4sPmbU6ljjus+d+/QUARKPQ9y2Tk5D/ISgXMEzoKcBPDfcoqzBPYPmGbYcd1nSR71corISH1zNyZ5Y9Olmnc7NW2n4zgXGm3bMPquaNrg6Ojon8lkstZEzHg8fo+mae7U1NTVRjwcDt+NWu3vW3jJUlDESruuQwCImObHIjLavIZK1x/I5/MX/da3U0Sj0cFqpfJPc5zkJ06h8KKybTtQLzKtqFaH1iIOALVazfaLi8he27YDatZ1d8OnwpEsQdPOrdWApmk/kfzXJxWadd3dSoA9bcYeyefzLUt3u8hms1cg8rpfToA9qn6wtEAPBL5cq3gDwQ0b/LlEhhSAaHOcZGl6ejrVLQPpdPoaySmfVFQ1jtQmFEhKtwwAAERmWkJkVNFTjG72lYGuigMA2cJJQCkAfju0PxwOm93STiQSQfh8agCuAuB7YVAij3bLwOL167tEpNcn5SiK/Og3SEReFpFVb0ydQIBX/OIUOa9Anm0zaMfmcPi1tYpHDGOfiDzmmyTPqtDGjd8CmPM1IfJuxDSPDA8P99yucDKZVBHTPCDAp226zG0SOdU4jI6LyEt1V+9r5M9VkTcgsg0ACEyD/EwB36tA4GImk5n1Y9y6detdpVJpWAEP1kT2QcRqZ5BKHXdmZvYrANBFjpEsAwCXB7oDIg+B/BUABNgiIoerIqcq5fKJZDLZ8tcFgOtzcxOo1b6r1WpvrShOLvaIHKtPbhkR0xwTkUP1ZlEPBGyS65bK5R+8dUFT6unczMwJP+JIJPKIVKtn2gl7DIw5hUIS8BShvlDo7frNBgBC1XJ5LJPJ/BUUuZ/kAQAfKKVeWN/f/007Yl3XJ9vlPOqTfaHQOzea3lw0Gt1SrVTOA9gMoEpNe8pxnJOrknoQNowKAL1NOq/19IzkcrlpXwMAEDPN7UsiJ2+YIE8DOE1gToDww7t2HR0fH6+uYGAJgOYnrpOPZwuF37xB30ITi8XiS5XKVxDZ3pwbMM3eld59YcOoovl8IS9puv5kLpdrORF9d3M2m830h0IjJMdI3vKkKpVKvmO8cjd1WSb55rr163f6ibc1AACpVGrRKRSSPYBNpT4EUAQ5n0gkllZUJ6+CnCf5kR4I3OcUCofS6fTCKqZXh20YfYODgxtX6xeLxeKWZXX6isb/mQzVdYidKdgAAAAASUVORK5CYII=',
                     blank:true
-                },
+                
                 {
                     name: 'GreaseFork',
                     url: 'https://greasyfork.org/zh-CN/scripts?utf8=%E2%9C%93&q=%s',
                     favicon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3ggEBCQHM3fXsAAAAVdJREFUOMudkz2qwkAUhc/goBaGJBgUtBCZyj0ILkpwAW7Bws4yO3AHLiCtEFD8KVREkoiFxZzX5A2KGfN4F04zMN+ce+5c4LMUgDmANYBnrnV+plBSi+FwyHq9TgA2LQpvCiEiABwMBtzv95RSfoNEHy8DYBzHrNVqVEr9BWKcqNFoxF6vx3a7zc1mYyC73a4MogBg7vs+z+czO50OW60Wt9stK5UKp9Mpj8cjq9WqDTBHnjAdxzGQZrPJw+HA31oulzbAWgLoA0CWZVBKIY5jzGYzdLtdE9DlcrFNrY98zobqOA6TJKHW2jg4nU5sNBpFDp6mhVe5rsvVasUwDHm9Xqm15u12o+/7Hy0gD8KatOd5vN/v1FozTVN6nkchxFuI6hsAAIMg4OPxMJCXdtTbR7JJCMEgCJhlGUlyPB4XfumozInrupxMJpRSRtZlKoNYl+m/6/wDuWAjtPfsQuwAAAAASUVORK5CYII=',
                     blank:true
-                },
+                
                 {
                     name: 'Chrome WebStore',
                     url: 'https://chrome.google.com/webstore/search/%s',
                     favicon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADT0lEQVR4nO2VT2gcZRjGf983U9du4ia7aYy4s8SEnooieBAVPCsWRFCiIsVL7VmoWKXX9iBUT8V/RTA2KkICIiJ4aSHooVBv1YaG7KrdDZoxu4nkz053dl8PO7O7k5lpd5qolz6w7Mz7zvc8z/t+3zsDd/A/QwEsLy/LzoRIKHRLJF1jWZYyAZRSIZLeWL/CSdb4MKOIbiXmum5kzjCMxCbMfoU9XFFKnRkfH5+OSpbL5VeBN4AHExnoFwMDA+8MDQ3NxOUty5quVqvN7e3t8/1y6iQG6vX6Cdu2j8Tlbds+4jjOm0k4Y6egX9zOtPjI5/MqUQf+DezKwG6q3xMDe4HbNrAX1UPCMQRordXYmv0cqa3h/l5skxQeQGWz7H/hFfRwNhGfAqhUKjctx7n0A/Vv5mhV/wKvcsFb4nfCZxBB50a4+7kpUo89GcspIhQKhfa3IJ1Oxz7YWrWpn/+EFIA2gqI7THTC62vI9Mfsf/gR9IF7b7pdCqBWq0U+UTv6EuK6Pcxh0e5ttCllmGSn5yLFc7lc/HvAXVxAGo1diSOCuA3ca1fjZKI7UDt9Erm2ECTtJY4Ujzbgh4zJgwydei8gHtuBL8w/90a8J9csLkZJhcdwpjTPB4cyFAc1Jy/ZwaTHmT3zPub9VsCEblQYvP76DvHg0dr6+zuczDOBWKgD35YvIwjfFwaCwgJoTfr5l1H3WVy4qjgxq3hrTnNxQeGaeZzsFN6uhsRBuGtzPtSBwBn4svQjp67Mdqp6+/Iqh0sbnUpHZ76msm5w/CvdQ9vFuy82sYabZIpTIXH/fyv3Gk7mKSDiDPxUXQrs60cPDbOxT7djStFSBmcvqhBt2yCcvaBpitHThaA4gFn/JWAtYODnteudbguwmjI4/KwFCKlHn+DcvKK0ojp5X9j3vLSiODevaQw+HimOCOaNYryBFWc9kBQRGl4x+yYOUrLDVfv0frxoQys1SfgMtKHcatiA4zjHAEZTGUSk8/Ppp57Os/3rIhOj3Yr9Ee/IeDcTo6CdpWCwp01i5vA0j4I3hmNjY5+Wy2V9wLznw99aK6F3dyVtMFv7g4mRG0hTd6i7reheTo60aG4sIW4rIi+4RobNzc1jlmV9FtmiO/iv8Q8bO7AiEMGc8wAAAABJRU5ErkJggg==',
                     blank:true
-                },
+                
                 {
                     name: 'Firefox Add-ons',
                     url: 'https://addons.mozilla.org/zh-CN/firefox/search/?platform=windows&q=%s',
                     favicon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAD3UlEQVR4nLWW3U+bdRTHP+dpFSllI6hzJmucEWiTZizTQtG5uRcgYRoS451eqBcmXHjhjf+B116Z6JIlvt0YExONAsqiw0zNKIWCkeTpYGrEFEIclDGElbbHi2elb89DW+m+V+3vvHy/Oe15EQoxtdBGeqcblSXC/nFEFDtEEx4y65dQeQEYo4XXCQQ2bH0BItdPo5kjuIxpQn6z0CQAqAqT8XfJ6lt5i0zS6jpFe/udomSzy01sJb8BPVOQ5mdaGCgToepmIn4F9NmCvB/Q7X8TkQyAAVBGbgV3kUw/XUa+vTZcTA6gJ0kyimk2Fz1PXj9RRG7lHSISfy/31SB2o72MPC/3wO7HuRUv28lRlOfsfe+KmFvx5sOzTfauOkRkPmgJSKW67BMCGSybaTazsTqK6ilH35yIjdVvdyuh0unsmg0BCNfMs6A/2DqJKMovCH5UH9qbvChwBSGG6nnAbevicvXT1XFZUBUi8QlUnStRb4hE6faHEclaXTA/38AaPUi2CaWTrL4D6qojYRbkbYzsNBj/Ih0xQrIDuTYsxYT5Parn6ijgKuHAaTuTUfZi/YGO1Y3cwjFif7RUFjC34iXJCKoP15VetYXUnTGiNw6WmvI/wexyk9XnlVptX5gAdz897bdyD1YFogkP22vD95gcIIykvyucmAbRhIf0rWHnCVdnKD2sszusDDLrl8pn+70Woc+wzicAbmul2mxd4SYq72MQB21HeQPl0YrJRZKgHyL8inIUZQh4xEbF86iKGxgDXipJksXgJF2B+O7btHmRHR1DCe5B/jcu6SMUyO/86J8XyWwtoHiK+eUyImrQ3PoaIleLjSwXkQM8GUgg9w0Aaw7s2xjugdKDg9DRJRSzxHmKhoZXAAyCh27zQMsAwo8FDilbju62RUQ+txegI3S1/WavjfxRIzKDx9PHiceTlgCA44c3cR28gMiXQBrRj+1JAGTJ4X3ROUQ+A9IgP4G3l87HdqtYvgsWFxvx+bYck10zvwIdtGEZpydw1jFubsVL8NDtsijHgFJR/6QbSKUGQT9C1T5OjFfp7vjU8Zi1C9nTqipEzCs1DSmRLOg2KhHc/v7c2nVC+TYsxNTvvponpKphtZyeIb3wVCX3vQWEnvgL5IuaBOQgMkO4bXJ/AgCa/S+DjNZIPgve3tztvz8BQUnxoOtFhLEqyWfwNp0jfORmVe5VJQWrExKbX9+9dJ2yxfB6ewn6VqtNW7kCOfh8W7gODIKMO3hM0+g5Xws51FKBHOwuJ5EojY39hROuWlRfgRyOH97E22qNbWEHZIT7G/r+D/n+4TQRa8B/kvpzjBrBCDkAAAAASUVORK5CYII=',
                     blank:true
-                },
+                
                 {
                     name: 'Userstyles',
                     url: 'https://userstyles.org/styles/browse?search_terms=%s',
@@ -2425,25 +2437,25 @@
                     url: 'http://forfrigg.com/#gsc.tab=0&gsc.q=%s&gsc.sort=',
                     favicon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAFQUlEQVR4nMWXT4tlSRHFfxGZee97VdXaOroRBuYbCLpwIaMtbl26Ety7HETQxegX8A8uXLkVP4AwMAgiyKCCqMwoCuKgojjWOI12t1317s3MiHCRr9rpnq56U90LAx6XR76XcfJEnBM3JSIE4DOf/9IL6Y2ffuve2Y6LyCmRn7vF04aKnIvw4kvf+8a3H12TiBAR0U/futU/9fzH+N1vXuPDH/kob56e8tvXfs1nv/JdTDMybZimmQCSCN0DiWA7ZwDWZuSkuEE1Y8qJtXUc+Nvrf+DVV37sL3//m1NE+NsB5ItnRPCn1//I7dtv8de//Jnbt98C4Pf/+A+hGc2NMjdUhGrGunSmOdOqkbPSu7OZM0vttOZMRUmq7JbOsx98jpKT7vPVh9h55Dm+qCIiAIRDb8E8JZII5kavDiIUVUpO4+QetOZYD25sC/OUWKshArUaIvqOPJcCeKhGCtOcuH/ecIIIcAIBzpZKSoIIEFBbZypK92C3jOQi+/VL8lya+CLWarQ26AVwBxxKUXJSlrXjBkiwmQvzlDk7b8yTgkBrRsTl++fLl/YIdX88oHdn7UYQrIuBQskJc8Mddkuj5oQq1OpMKdHE2WwuT3OQARVISVHAAsKCpON0SZXWjW6BR5BzorcOIkgSlto4OS7Uak8OYLd0rAUhMGfh5o2ZIPAY/eEetOqEQ107200ZElwac8ncvbcOwJfEwRLklEhFqatRNoV791dKSeRkJBGON4W1GggIwm7p5KxsN4XajHnKXJTwiRjo3tktFSMwC3IRWuu4D4nulqGOpEJtxnaT6N1Y1g4hIOBP04RzzsxHE0uH6UgokanitO4jcUrjJCIcbTIEnBxPuAVLNVRGoz4xgJITZpCTEAFrdcwckSBrwnHMRj/U1QenaxCM/4gIu6Veuv/BEpwtjbPdikdQu9PMSVmYS2K3jnqHBOFjXYDaHLOg9+B8167c/7AMFTZTZlk6WYWswhgnylwUAqaUEFGmSShJOd4WFCEnmKe0b8THx2EVqGI+ZoGKoCr05qzRcGNvw0LrRm3BWV9JIsxTwh26Ofo2L742AE1KUqEFnC2dpELKwpQTZ2vHHMw6qso8Cds5YR7kJKzNqdWxhyfw9QC4GVOZmEomNOPuRATNgqJK7cZcEq0HhLP04HibaT0oScknBb9ChwcBIEK3YLHG0VHBI8Y7QbNhQONHlCQESgnHA5KCuUOMGXJZHGxCsxhzwIKIQBDOzitTVt57Y0JEhkSB3hxNym7XHshQk1zpAwcBjLnfuHFUEITejZIT1ZxlNbZzQlVQgXmTEAm224wA988bEXBFDx4uQVLBXHCH5n00ZRLqOvzfHTSCtTllEnDoPijPOdFteMITM9B8jNnmTk46qO6BxTAfGVZAKcK6Gr075mNkBwEB7k/RA0rg4eNkFnh3WjOyKrI3JXNHRJhKIgAJwczJ+9LkdzULvPG+9z/Dm6dvcOM9N7lz59+oKh965gTNE5pnQhKigvcgZYEQLIb9XkhN9i+IIkJE4A7JlsMAvJ3zq1/+AoCf/+wVAMrJB7C/v8rjSni1wz8c5+s6WLwKQN7exOoOLVsAnv/kJ3jxq19jXddrpHp81O584ctfvxKAR0QNb5OvQ8M/+eFL/OjlH/Dsxz83Zq0oSALNoBlJGUll/5mQVNBckIs1/V/d651T1rWeAu+g4QEA0/k7mpYXvC0Ko7Onacty985TMxARt+/+659ffByAB3dD4AQ44t3Y8/WjA+fA/UfvhnJxO96DyAxpHpTnNWJ/laE/mvwhAP+v+C9sz+VdwyQu0gAAAABJRU5ErkJggg==',
                     blank:true
-                },
+                
                 {
                     name: '威锋网',
                     url: 'https://s.feng.com/index.php?srchtxt=%s',
                     favicon: 'data:image/x-icon;base64,AAABAAEAEBAAAAAAIAAAAwAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAAQAAAAEAgGAAAAH/P/YQAAAsdJREFUeJyNkl1IUwEUx3+73nbVTV13zaZlsw8VIyvbSkiyeimjHtKHIkSiwCAwhIiIoIceCqJeyqIg6qUoiIigDyOKCsUinPmxMpZmpubH5pz7crve7fZQSSuIztvhnP///M//HN3zL9OaMqOyUtaRKxv4n5gKK5zrCeAtkhEe2lJ5sMTIoX4NZ6/nvwhudI0x5ZhHToaAYALMAlhLjZx+rxCORP8JVtU4LaMxxJ+58HvRF5fodvUAEI6pOIciPOkN0eSa4ONwAABRTGHu2DdGxsEPiH5ABXxe8LU5mb+mmFa3l2tBA2ORcQDMjnymvbD46SgNjgzqNy9k3/kmJjZVoNvRltDiMRh69pZdmR/YsGUbjQYrEXczL2r2I5ksrL90hsRMFGlhGYlOH9e3zyUUDPCs+R26xptPtGHPJKWLjJSXr6ehSyTDnsDVeI3RVg+WiloE5Q0dZ0+w/dVTJOsKClq6ObWn5MdK9TVbZz1ock2g5qXzYGslaeZlFNbUIWWm4r7dTn71cbKLlqDMgRa/Ad9UCDnLmGxi50iALJtI6eF6YgEV962rtB6tZdIdYu2RGkyZ6WgqqFIqx+5+IpZg9hoA6AWJiA9K9uwkz74O5+V7yGuqkB12gsEp/AGJRDydeGCadr2e665gsgJ7joC/L05QA3NhLvLyfLKKV2GwptF74y2Pqg8w8nKQac84WTmZdAz6kgkcS+eR9vELk1/B3eam8/wVoqMfSLPEsFWtIkU00n32JOEBJ4piZnN6IJnAIIkcWR3B8/gzfXe6AcguL0M0yuizC5Hte8mdb6JEjlJncrN70wp0mqZpf77roxdOTly6jyc4g6WiFoDIwHuqlic4XFuJxWya7U0yMRJVuNA8TI/OiliwGke4n4MbFVL1IrYFG7AtyPlzVrKCi68H6SnLQxIgFIVPj72cW6lhX2b5C/grvgPjZxiC9n+r/wAAAABJRU5ErkJggg==',
                     blank:true
-                },
+                
                 {
                     name: '我的小书屋',
                     url: 'http://mebook.cc/?s=%s',
                     favicon: 'data:image/x-icon;base64,AAABAAEAEBAAAAAAIAC2AQAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAAQAAAAEAgGAAAAH/P/YQAAAX1JREFUeJylk7Gq6mAQhL8NtxMDAdu/DphKUvgCQdKr8SG08DFSWsp5gxT2FrGNIAo2thY2lkqKaKHurY4ajxzk3oGFhf2Zf2bYFdd1lf+A9d2ICO/6jwlUH0Ke+98gIvx5NzDGEEURnucBMJ/PSZKEPM9L71QVec3AGMNkMsG2bbIswxiDMYbNZkO73S4RnE6nsgIRIQxDbNtmOBwynU4BGI1GhGGI53ksFgvyPKcoCm6324NARFDVu8woigDIsozBYMDxeCTPcy6XS9mv67r6Wl9fX/qM5XKpURSpiPysd3twvV6pVqs0m00ajQbdbhfHcWi1WqRpelcMlDNQVfr9PvV6nV6vx3q9BmA2m5EkCb7vk6bp3S487cH5fGa327Hf7wmCgPF4TBAEBEFAp9MBYLvd3j8qZVCr1VRE1LIstSxL4zjWV8Rx/MO/ZVkqlUpFi6J4jQHHcfB9H4DVasXhcCjNvzMQEfnnYxKRRwYvrB8RqGr5GlW1lPAn+Asf+sooQi/6SwAAAABJRU5ErkJggg==',
                     blank:true
-                },
+                
                 {
                     name: 'Library Genesis',
                     url: 'http://gen.lib.rus.ec/search.php?req=%s',
                     favicon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADfElEQVR4nM2XQWgbRxSGv5SFncNSDXQhexB4aQUVRhARDBFOwSEt2PRSU3pI6CFJL8mtLTmEnEoOxYRSQm/pLaE15FCa9NCSQy+FYmQwRQFTVmCCAqJsQIQR7GEWBtrDaFeqsaVdieI+GObtaPa9f2b+9+/o1KtXvb85QXvtJJP/LwA4ZSbv7Bsu33mEEIJACgJfUl+SrDVDLja9uQCcKsuBW/f3ebD9G3gC9Hg8CCs8/uoSb/qmFIDSR3D3RgNZPW0fPEDYFkcv+Wa7XTbcfBy4sBKCBikrBIFtSMHTvV7pWKWPYNJel9XcV0oT9RXL1XJHUJiEz2OHXqyIlUYbjdaA6ZMaS4SKZ0mplGC1UZzbhWaeufYDcX9oHwxgtO2zt3NfWE44sPXpOp9sVI+I9m8rdAQ7keHy7UdonYJwbcIMfpbcpIBr/SRFBhW63300E0AhEq7WHe7d2rBlZwBS+0PmG8Bxx2MCtNZHRJoTAMCHLZ9mawl0apOZ1LYESFIYDG2v7VgYyEJxSynhlXebdJ5281VKv0IYSKQnEA5oA/FAEUUv2VyrF4pZugy/eLC/kPQuDCCzP/sO8cCWpUo0w0QjRvvpCoEUEPhyJtCZR/BLO2E36tHpxvQGGqUUOhkRT2twxHhyXhHjcem7PL539ViBmroD17/e48n3u1bzHWGDZ5Az1h9ejjnUD4a03nmbn7beOzLH1B349uYKwRuC+9u74LnjWp80M1kV2VgGwgVP0IvVsTlmluGdqw1ufHwOBlnyUfnlySdAOIz6CbHCVsfcADIQuQbAeMWOa0GJETCyXZoAZCD05WIAALauXxh57pgLJp0QIcYA9chPUhhoNs6Fx8YtLERnaw71xhLRXjcnpAwqNGsBzbcClqqS0JdIKZCeQCWaqBfzoq/4/FJtcQAAV9brPEw0G2t11lshZ2tHvW7Y2Y9ZbXgsV33AnxpzoQvJYfvx9wEPf+7Q/rXLZzfXuT1l5ZmV2oFJex479AaKZwcx7WcxnShGxUMb0RMoVexrWBjAX8rj2pdP7I1Ia5QaES9TPYHVCgdQKULMCFgWgEo0nb0XNhHYMvMgr4r8nmA1YG0lLBS3cBkuVw1B7TRkWzspRnp8DyAesrl5houNYl/LUiT848Bwd7tNdBATJzpXO+kJAl9QDwM+OB/yfms68+cG8F/Yif85/QdlMHLuJQQjHQAAAABJRU5ErkJggg==',
                     blank:true
-                },
+                
                 {
                     name: 'B-OK',
                     url: 'http://b-ok.xyz/s/?q=%s',
@@ -2469,31 +2481,31 @@
                     url: 'https://pan.baidu.com/disk/home?#/search?key=%s&vmode=list',
                     favicon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAGQUlEQVR4nMWXX2wcVxXGf+furGfX63jjxnVsJ5t1mj82LnZIIWmbBJWiJkUQUCuKkIAHSJEoCip9KilI5RFeUOEhRUCDKoJAvCAhEHH+NE2ryg1piKFt3Nq1izfJ2vHW2ziJx/bszNzDw9hJEzu1oVF7nubhfvf77vnOufeMALzZ18fU1FRyVS53v+u6u13X3YJIBlXhZoSIour5vt/t+/7eM2fPHkyn00FbaytSKpWY9v3aZcuWPeZWVe1OJBINN4X0BhFFUcmvVPaWy+Wfp1z3EoePHHE8z3vSWlvRDymstRXP8548fOSIQ7lc3hmG4fkPi3w2wjA8Xy6Xd8rExMSBTCbzuf81lVYhjOJvJwHm/6gWz/O6JAiCccdxsosFTfhwqmA5OaS8PaYA3FYvfLJFuGOVYUlq8QLCMLwoQRCEjuMkFgM4OWTZ3x1xcsgyFYDG/IhAKgmbWgzfuDvBptVmsQIiCYIgchxnQcTxgYif/C2gUFYSBtDYBphJv0BkIb9M2POFJHevW/hMYRhaZzFKhy8oTx2oUChZEgY0hKUZoaXeoEBhzDLuKQmBQgmeOqDk61M01y1cGIsS8Nd/Brw1HGIAscK97Q7fvKeKVfWCKpwpW559ocKx3hCjMDBi+cvJCt/d7i6494Kpn/SV4/0BYWCJAktbk/D4l1w+njPUpoVstdCRS/D4F10+1miIAksYWP7RH+L5+sEFeNNK+WKEWEVUuWttgobaualdnjXcuTYRr7Mxxpu+CQIiC0ElIopAFBqzN/Z1eS0YtWgYZyGyC/LPXwOhhcGS0nMWCmNKMrjEtvETnEm28J9iK4rL9TIUGByJCFUw6SSeGH53XMnXKxtzsKZBmK/X5ggYGYd9L1leGlBKl+NWS1Y1sdmc56tDv+Sdo/cyuuk7NLZc+2b1FS0vn0mQyNZgHIMH/PEEGGNpWALb1goPbzM0LX0fAWffhZ/+3fLyQOydSJz2gCTTppqGcJT6N/7E2Z+VGPraHhrXNCFq6T1n+cMrhuLlZNymNhYugFgojcOfTyoj45Y9nzfkbplHwHQA+16wdPfH/awKdTWwfjnkLp1my+mDWFUwBvfV5zk6Usdzax8hSqYYs2nCRAIjYC1k09DaJCQM9I0oF7z4MN39yr6MZc9OQyp5nYA3h5VjvYrR+AQbW4Td24X1jZAK8nibv8/wr39BMHgaY4TNF57jxXOfodC4hap0EqMxeWsTfG+7YUNeEKD/vLL3sNIzpBiBY73KA3con8jHVWRkppr6hmFiErBwaw08ukPYmBcyrpCoWULtnVtZ8chjJGrrQC2BU006myGZcsGCjaBjhfDjBw1b1ws1LmRc2JgXHt0h3FoT7z0xGXPNWmwgTnexrGgUX7PtzUJb89x2y9zeSWpljnJyOftv+yH92U9hIotG0LlS+NED8+PamoX2ZkFD0GiGS6+zwNpYIRqrMvO0jABj6Ry/z+/iX9l7kEixCp154YkHhfVN898Rxsyc1Mab2PfcD2Y2FY1ZQSzxXV5Uhkbn3mLnipM863ydnrrPxuQRdOaukk9VoBLOFTA0qgwU4/oSO8M1o9WZTUXbCshUwaQPxTH4zUHl2zsg3xA/OIPnlV8dyfJKcAvGxKfY0CI88WVhXbPQ/Yay/5jSVAcPbRXWNMYkhZLyzCGlOBZnsNqNuSC2/ooF7TlhS6tw6FT83j//b+X1gtKRFyILrw0p5csOAtgQOvLKnocM65qFix48c0jpGYyx3b1KR0vchq8VlHfGY/LIwpZOoT131aorAqpd2HWfUByD00OKMVB6Fw7PjF2zNWEVNqyGH3zFsH6m4NwkNC6N7ROF8kU42nMdzsLtLcKu+4Tq97zSc0ayt4rKvoPK8V5lYvpaL2ur4dMdwrd2CC3Lry24Qgl+22V58XXl8uS1uJoU3NUuPHy/sG7FVdzsSDZnKJ3yoWdAOdGnDA7HI9e6lbC5TehcLaSqmDemK/Dq2zGu/1zs8Zpm2NwqbFwrpK+bT8IwvPi+Y7lVCENAIJngSuUuFKoQRICC49x4ZPc8r8v4vr83iqLR+RYYgaokVDmLJ4d4bZUTY29EHkXRqO/7e82pnp4u3/efVtVg8RQfLFQ18H3/6VM9PV0f+c+pwEf7e/5fM4zdUv6k9qAAAAAASUVORK5CYII=',
                     blank:true
-                },
+                
                 {
                     name: '盘多多',
                     url: 'http://www.panduoduo.net/s/name/%s',
                     favicon: 'data:image/x-icon;base64,AAABAAEAEBAAAAAAIAAXAgAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAAQAAAAEAgGAAAAH/P/YQAAAd5JREFUeJylkz9oE1Ecxz+XnpKUlPxZEq7DDVeog1wU3OQKdmgnERoIUlFnNXQQdBHd4iJ0URRcWiWjLnZKN1O6BfRCF6EHZvCMCEkvf3yRNH0OwcPzkkW/y/v93u+97+/3/b3fU760B3IuOsO/oDsYoSZnVWZPhwnKlRpHPUExb00lmIkoqKMTGdj0eoLCo228vuDBjRXqjhuIm4bm26MTifo3a9V28PoCK2dw7/m7UNbimhWoKkTQaLYxjXme3L6Cnkmzs39AZfMWAGeuPQ4Rqn9e9PqCuuOiZ1P+qmfTIRl1x0XPpIiop1A6Yijnoiqrd1/Q+NYOZZiG66sX2CgsQ0cM5W98/tqSi+sledT9IaWUsvBwS77/eOjHF9dL8umbqu93xFAGerBnO+QMjUQ8BoCVMyi92oWbK5QrtYmVBAjMBY1EPOr7xbzF5Ytnxz05dEnEo5gLWoDA7wHAs7d71B2XRrM1tR96JuW/SndwHH5GgJf3r1J6vYtpaCydG8u4k7fweiI0G5GJWbIpqrYzlmVo2I5LMh5Dz6ZDZ5WOGMoPnxqUKzUazRZeX2Aa81RtBz0znoOq7bCUMwB8W8+m2Cgso/R/HsvvrQ47+wcTNU9DMh5j7dJ5lP/9zr8A5hvhBGvOuq4AAAAASUVORK5CYII=',
                     blank:true
-                },
+                
                 {
                     name: '56网盘',
                     url: 'http://www.56wangpan.com/search/kw%s',
                     favicon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAEbUlEQVR4nMWXaUxcVRTHf28WmM4MW1kLgqVQiqEVBNtKhagxVdCorba2JhZIjNZooo2p1ETbfrGNS+uaurbxg1ZNI9o0ktbSpI1RA4TSsLVICUyFsA7LwAwzzMyb5yce82A2QOL/09xzzr3n9+56RuB8hcT/KE2ogXFaI4/G51IafyfFMVlEa/XYxGnqx7uoHm6meriJfxwjCwYQgs1ASngMhzIf59nkQvTqcL9xLo/IuaFrHO78hTZr338DsDtpMydy9rBSawh5QIfo4uDNn/nA9Bsegq+uyp9jf3oJ3+W+4DO5JEm4PSKSND+BTq3l/exdfJZThgohKIDPPVCefC/vZj2NSpgdQJQ8nB9u5nR/LQ2WbsZdUxjU4eRGprEz6W52JG1Ep9LK8XtT72fEaeXNm1UBAeYtwTpDEg2FhzFqdLKt0zZIRctJ/hzv9DtQtmEV32x4jnuiMxTQj1z9kIvmVr/95i3BsXW7FclbJ3spqjsaMDlAu62fB+vfUyRTCyo+yn4GraAODeCuyNspjd8gtyfcdp66doJB50TA5DOa8jjZ3fQF3VNm2XaHMZntifmhAexJLkQtzJqOdV+gY2ogpOQzGnPZONBxRrFBy1OKggMIwEOx62XHlOjky54rC0o+o7ODjYpLqTgmC70qLDBAlEZPpiFBdly1mBgKcernyiWJ1Jjb5HaERkeGPsFnrAwQG2Yk3OsYtdtCv8186fqc/im6mMAAc3eqVZxeEoDVreyvEXzfebLV7nEqNs5KrXFJAHFhyv4OjyswgNlpxeb11XkRqUsCyItMU7Rv2X2/lDKATZymebJXduREpJBtWLWo5JEaHVtjc+T2wLQFk93sM1axMNXDTfJvjaBmf3rJogD2pj5AjNcjdtHciksSgwN82/cXdtEpt8tTing4bv28ToGUbVjFWxmPyW1JkjjZ+7vfeAVAj2OUU17BGkHFD7kvUuj1wATSmhXx/Fqwj0jNCtl2caSNP8Y6QgMAONR5llte6xWjNXBpYyWV6aV+bzOtoKYseQt1hQcVF47FbeeV66cDliU+K6LNUWu4tLESo0ZZgvU5xjk71Ej9eBfDzkmitXryItPYlpDPWkPivMGbJ3vYUntEcbpCAgDYGpvDmbyXiNbqA/AHV9VAA7uaPkeUPD79fkuympE2ttS+Td14l8/Sy5+kORP+ZFIB72Tt8BvvFwDghq2forojlLV8TaPFhMfPV0iSRIdtgH03vudjU43CJyDw2uoSnr/tPp99g5bls4GQqU+kMDqTTH0CERoddo+T7ikzdZYu2iZ7EZFQCyqq8l7miTlFyLTHTWnDcS6Pti8OYCGKUOu4vOkABVGrFXaz00px3VHabf2yLeASLFaTooNt1z6h1zGqsMeFGTmX/ypxXg/dsgAA9DrG2N74KVa3Q2Ffa0jk9fTS5QcAaJgwUdFyCvecdyDZqzhZVgCAqsEG3vj7J/koi5KHH/trZX/I/46XouOmCww6LexM2sRXPVeoHm6Wff8CcSai56TwP2UAAAAASUVORK5CYII=',
                     blank:true
-                },
+                
                 {
                     name: 'Pan115',
                     url: 'http://www.pan115.com/search?key=%s',
                     favicon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAB40lEQVR4nO2W4U0jMRCFvzlRwEIHkA6gBG47SEqASC6AiBKgAEtHB3eXDgglkA7iEpLtwPxY7zJr7GRvtSJIx0iRdsaemWfPeF7gfxcZ4uQtv8LnBnBiWA4FcDLQ71Z9L8NvXADecpFZmkb67z17WxGDS9r3AHgGfh4K/A9SimEVG3+MmGCQ9O2BJbBQegH8Dbb1Hr/NWAC2uobesgEuAoilGGYpJ28PBx5aAl3Lqbfs+jTiaADEMAdKoAqmgoENewLgLQVwFq1pvUqc0AHX1GVYA6sDt1Do9aakEgDcQjvdPkNWYijhCz3DP3QbqwBelT7j/bk13e+AG977ICX6GeoYrSQnobfcAQ9BrcRwqtZ2AWAjCzE8ZuJ4pSYn4Yc5EBrlXplip3PgBbgM+oO3lGIooyaca6dUcohuIAR4pXvCSYpI1C1VwBWwBXapJMBaDFephbYJvWVKXTOdfJ5lsfraJ8BMDE4MFST3OkhPSuiWYE19mgbAkxieco4BhIuSltGWbQCWj6GVqAR7HQfIKsUZnSYUg/OWBfVQKkYGkIzXhw2rTJA+9mzivgDakQkdGiaaDfrf06x5cn1G/NFH8dEBpOh4otbPchQb2TV1a9rNxjo2HTsxNbivUQI+0vG3fJq8AbQYmOhoQk+aAAAAAElFTkSuQmCC',
                     blank:true
-                },
+                
                  {
                     name: '胖次分享',
                     url: 'https://www.panc.cc/s/%s/td_0',
                     favicon: '',
                     blank:true
-                },
+                
                 {
                     name: '小不点搜索',
                     url: 'https://www.xiaoso.net/mod/app_search?wd=%E9%92%A2%E7%82%BC&mod=app_search&oksubmit=true&okbtn=XiaoSo%s',
@@ -2723,14 +2735,14 @@
             q: {
                 name: "queryKey",
                 parser: /(?:^|&)([^&=]*)=?([^&]*)/g
-            },
+            
             aq: {
                 name: "anchorqueryKey",
                 parser: /(?:^|&)([^&=]*)=?([^&]*)/g
-            },
+            
             ds: {
                 name: "directorySub"
-            },
+            
             parser: {
                 strict: /^(?:([^:\/?#]+):)?(?:\/\/((?:(([^:@]*)(?::([^:@]*))?)?@)?([^:\/?#]*)(?::(\d*))?))?((((?:[^?#\/]*\/)*)([^?#]*))(?:\?([^#]*))?(?:#(.*))?)/,
                 loose: /^(?:(?![^:@]+:[^:@\/]*@)([^:\/?#.]+):)?(?:\/\/)?((?:(([^:@]*)(?::([^:@]*))?)?@)?([^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/
@@ -2867,14 +2879,14 @@
 
                         ele.addEventListener(map[type], listener, true);
                     };
-                },
+                
                 remove : function (type, ele, callback) {
                     if (support[type]) {
                         ele.removeEventListener(type, callback, false);
                     } else {
                         ele.removeEventListener(map[type], data(callback, 'mouseELListener'), true);
                     };
-                },
+                
             };
         })();
 
@@ -3366,7 +3378,7 @@
                         if (self.hidden) {
                             self.showTimerId = setTimeout(function () {
                                 self.show();
-                            }, self.showDelay);
+                             self.showDelay);
                         } else {
                             var style = list.style; 
                             style.top = parseInt(list.style.top) -6 +"px";
@@ -3384,7 +3396,7 @@
                             list.style.opacity = 0.04;
                             self.hideTimerId = setTimeout(function () {
                                 self.hide();
-                            }, self.hideDelay);
+                             self.hideDelay);
                         };
                     });
     
@@ -3403,9 +3415,9 @@
                         list.style.top = parseInt(list.style.top)+6 +"px";
                         self.hideTimerId = setTimeout(function () {
                             self.hide();
-                        }, self.hideDelay);
+                         self.hideDelay);
                     });
-                },
+                
                 show: function () {
                     if (!this.hidden) return;
                     this.hidden = false;
@@ -3442,10 +3454,10 @@
                     setTimeout(function () {
                         style.opacity = 0.96;
                         style.top = top + 'px';
-                    }, 30);
+                     30);
                     this.a.classList.add(this.aShownClass);
     
-                },
+                
                 hide: function () {
                     if (this.hidden) return;
                     this.hidden = true;
@@ -3632,7 +3644,7 @@
                 }else{
                     console.log("没找到 AC-baiduLiteStyle")
                 }
-            },2500)
+            2500)
     
                     
             // 由于与要插入网页的样式无法很好的兼容,更改源网页的样式
@@ -3814,7 +3826,7 @@
                 // input[range]
                 that.rangeChange(true);
                 document.querySelector("#setBtnOpacityRange").addEventListener("input",that.rangeChange);
-            },
+            
             dragEvent: function(){
                 var that = this;
                 var odivsdrag = document.querySelectorAll(".drag");
@@ -3826,7 +3838,7 @@
                     odiv.addEventListener('drop', that.domdrop, false);
                     odiv.addEventListener('dragend',that.domdropend, false);
                 });
-            },
+            
             addContent: function(){
                 var aPattern = '<span draggable="true" class="drag">' +
                                 '<span class="sej-engine"' +
@@ -4018,7 +4030,7 @@
                     closebtnELe.setAttribute("title","close 关闭");
                     this.ele.appendChild(closebtnELe);
                 }
-            },
+            
             show: function(){
                 var style = this.mask.style;
                 var eleStyle = this.ele.style;
@@ -4035,8 +4047,8 @@
                 setTimeout(function () {
                     style.opacity = 1;
                     eleStyle.transform = "none";
-                }, 30);
-            },
+                 30);
+            
             hide: function(){
                 this.allBoxClose(); // 关闭所有次级窗口、菜单
 
@@ -4046,14 +4058,14 @@
                 setTimeout(function () {
                     style.display = "none";
                     document.body.style.overflow = "auto";
-                }, 500);
-            },
+                 500);
+            
             reset: function(){
                 if(confirm("将会删除用户设置！")){
                     GM_deleteValue("searchEngineJumpData");
                     window.location.reload();
                 }
-            },
+            
             // 增加 “添加删除框”
             addDel: function(e){
                 if (e.target.classList.contains("iqxin-btn-active")){
@@ -4087,7 +4099,7 @@
                     olistAdd.classList.add("iqxin-set-active");
 
                 }
-            },
+            
             // 关闭 “添加删除框”
             addDelremove: function(bool){
                 var obtn = document.querySelector(".iqxin-btn-active");
@@ -4105,7 +4117,7 @@
                     });
                 }
                 this.addItemBoxRemove();
-            },
+            
 
             // 界面,框：添加新的搜索
             addItemBox: function(bool){
@@ -4135,7 +4147,7 @@
                 this.ele.appendChild(newDiv);
                 setTimeout(function(){newDiv.style.cssText="";},10);
                 document.querySelector("#iqxin-newTitle").focus();
-            },
+            
             // 内部逻辑,：添加新的搜索
             addItemEnger: function(){
                 var otitle,olink,oimg,oblank;
@@ -4182,7 +4194,7 @@
 
                 // 添加完成,移除添加框
                 this.addItemBoxRemove();
-            },
+            
             addItemBoxRemove: function(ele){
                 ele = ele?ele:"#newSearchBox"
                 var newBox = document.querySelector(ele);
@@ -4192,9 +4204,9 @@
                     newBox.style.opacity = "0";
                     setTimeout(function(){
                         newBox.parentNode.removeChild(newBox);
-                    },550);
+                    550);
                 }
-            },
+            
             // 获取图标
             getICON: function(olink){
                 var ourl;
@@ -4228,7 +4240,7 @@
                     ourl =  ohttp + "://" + uri.host + "/favicon.ico";
                     return ourl;
                 }
-            },
+            
 
             // 界面, 框: 添加新的搜索列表
             addSearchListBox: function(){
@@ -4255,7 +4267,7 @@
                 this.ele.appendChild(newDiv);
 
                 document.querySelector("#iqxin-newSearchListName").focus();
-            },
+            
             addSearchListEnger: function(){
                 var name = document.querySelector("#iqxin-newSearchListName").value;
                 var innerName = document.querySelector("#iqxin-newSearchListInnerName").value;
@@ -4291,14 +4303,14 @@
 
                 var btnEle = document.querySelector("#btnEle");
                 btnEle.parentNode.insertBefore(odiv,btnEle);
-            },
+            
 
             boxClose: function(ele){
                 var odiv = document.querySelector(ele);
                 if(odiv){
                     odiv.parentNode.removeChild(odiv);
                 }
-            },
+            
 
             // 界面 框：修改框
             addEditBox: function(e){
@@ -4356,7 +4368,7 @@
                 this.ele.appendChild(newDiv);
                 setTimeout(function(){newDiv.style.cssText="";},10);
                 document.querySelector("#iqxin-newTitle").select();
-            },
+            
             addEditBoxEnger: function(){
                 var otitle,olink,oimg,oblank,ogbk;
                 otitle = document.querySelector("#iqxin-newTitle").value;
@@ -4387,7 +4399,7 @@
 
                 // 修改完成,移除添加框
                 this.addItemBoxRemove();
-            },
+            
 
             // 标题编辑
             addTitleEditBox: function(e){
@@ -4427,13 +4439,13 @@
                     element.appendChild(newobj);
                     newobj.select();
                 }
-            },
+            
             addTitleEditBoxRemove:function(){
                 var odiv = document.querySelector("#titleEdit");
                 if(odiv){
                     odiv.parentNode.innerHTML = odiv.value?odiv.value:"空";
                 }
-            },
+            
 
             // 高级菜单,配置文件编辑界面
             editCodeBox: function(){
@@ -4464,7 +4476,7 @@
                 // console.log(JSON.stringify(getSettingData,null,4));
                 editbox.innerHTML = innerH;
                 this.ele.appendChild(editbox);
-            },
+            
             editCodeBoxSave: function(){
                 var codevalue = document.querySelector("#iqxin-editCodeBox textarea").value;
                 if(codevalue){
@@ -4474,18 +4486,18 @@
                     // 刷新页面
                     setTimeout(function(){
                         window.location.reload();
-                    },300);
+                    300);
                 } else {
                     // alert("输入为空");
                     this.reset();
                 }
-            },
+            
             editCodeBoxClose: function(){
                 var box = document.querySelector("#iqxin-editCodeBox");
                 if(box){
                     box.parentNode.removeChild(box);
                 }
-            },
+            
 
             // 导入窗口
             addImportingBox: function(){
@@ -4525,7 +4537,7 @@
                 newDiv.innerHTML=a;
 
                 this.ele.appendChild(newDiv);
-            },
+            
             addImportingEnger:function(e){
                 // console.log(e);
                 // console.log("第几个： ",e.target.getAttribute("xin-importing-id"));
@@ -4597,7 +4609,7 @@
 
                 var btnEle = document.querySelector("#btnEle");
                 btnEle.parentNode.insertBefore(odiv,btnEle);
-            },
+            
 
             // “设置按钮” 透明度
             setBtnOpacityFun: function(){
@@ -4620,14 +4632,14 @@
                     // console.log("非chrome");
                     iqxinShowTip("抱歉,目前只支持chrome类浏览器",2500);
                 }
-            },
+            
 
             // 标题点击 （开关搜索列表）（可以并入到下面的点击事件）
             titleClick: function(e){
                 var target = e.target;
                 target.dataset.xin = -parseInt(target.dataset.xin);
                 target.dataset.xin>0 ? iqxinShowTip("启用") : iqxinShowTip("禁用");
-            },
+            
             // 点击事件   此处的 if 需要根据实际情况替换成 elseif (switch)
             domClick: function(e){
                 var targetClass = e.target.className;
@@ -4733,7 +4745,7 @@
                 if(~targetClass.indexOf("iqxin-items") || targetid === "settingLayer" || targetClass==="btnEleLayer"){
                     this.allBoxClose();
                 }
-            },
+            
 
             // 关闭所有次级窗口、菜单
             allBoxClose: function(){
@@ -4745,7 +4757,7 @@
                 this.boxClose("#iqxin-sortBox"); // 搜索列表排序
                 this.addItemBoxRemove("#importingBox"); //导入框
                 document.querySelector("#btnEle2").classList.remove("btnEle2active"); // 更多设置
-            },
+            
 
             // 窗口位置拖动
             setDragNode: function(ele) {
@@ -4770,7 +4782,7 @@
                         document.removeEventListener("mousemove",move);
                     })
                 });
-            },
+            
 
             // 拖动
             domdragstart:function (e) {
@@ -4782,7 +4794,7 @@
                 dragData = dragEl.innerHTML;
                     e.dataTransfer.effectAllowed = "move";
                     e.dataTransfer.setData("text/html",dragEl.innerHTML);
-            },
+            
             domdragenter:function (e) {
                 var target = e.target;
                 var targetClass = target.className;
@@ -4790,14 +4802,14 @@
                     target = target.parentNode;
                 }
                 target.classList.add('drop-over');
-            },
+            
             domdragover:function (e) {
                 if (e.preventDefault) {
                     e.preventDefault();
                 }
                 e.dataTransfer.dropEffect = 'move';
                 return false;
-            },
+            
             domdragleave:function (e) {
                 var target = e.target;
                 var targetClass = target.className;
@@ -4805,7 +4817,7 @@
                     target = target.parentNode;
                 }
                 target.classList.remove('drop-over');
-            },
+            
             domdrop:function (e) {
                 debug("拖拽结束")
                 // e.target === this
@@ -4861,13 +4873,13 @@
                 // 重新绑定拖拽事件
                 SEJsetting.prototype.dragEvent();
                 return false;
-            },
+            
             domdropend:function(){
                 var dom = document.querySelector(".drop-over");
                 if(dom){
                     dom.classList.remove("drop-over")
                 }
-            },
+            
 
             // 判断是否能连接至google
             isOnline: function(){
@@ -4885,8 +4897,8 @@
                     }else{
                         myImage.src = undefined;
                     };
-                },2000);
-            },
+                2000);
+            
 
             // 重新加载工具
             reloadSet: function(){
@@ -4901,7 +4913,7 @@
 
                 iqxinstart();
                 iqxinShowTip("保存成功");
-            },
+            
 
             // 设置按钮透明度设置
             rangeChange: function(bool){
@@ -4926,7 +4938,7 @@
                     document.querySelector(".iqxin-setBtnOpacityRangeValue").innerHTML = valueStr;
                     getSettingData.setBtnOpacity = odom.value;
                 }
-            },
+            
 
             // 窗口大小改变
             windowResize: function(){
@@ -4947,7 +4959,7 @@
                 }else{
                     maskStyle.alignItems = "center";
                 }
-            },
+            
             saveData: function(){
                 //
                 this.addTitleEditBoxRemove(); //标题栏处于编辑状态
@@ -5016,7 +5028,7 @@
 
                 debug('将要保存的数据：',getData);
                 GM_setValue("searchEngineJumpData",getData);
-            },
+            
             // 此处的样式主要是设置界面
             addGlobalStyle: function(){
                 var head, style;
@@ -5544,7 +5556,7 @@
             iqxinTimerGlobalTip = setTimeout(function(){
                 odom.style.opacity=0;
                 iqxinTimerGlobalTip = null;
-            },duration);
+            duration);
         }
     }
 
