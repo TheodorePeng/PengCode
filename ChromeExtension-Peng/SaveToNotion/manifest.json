@@ -1,0 +1,36 @@
+{
+  "name": "SavePage",
+  "version": "1.0",
+  "manifest_version": 3,
+  "description": "将当前浏览的网页保存到Notion数据库中",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "contextMenus"
+  ],
+  "host_permissions": [
+    "https://api.notion.com/*"
+  ],
+  "action": {
+    "default_icon": {
+      "16": "icons/save-16.png",
+      "48": "icons/save-48.png",
+      "128": "icons/save-128.png"
+    },
+    "default_title": "保存到Notion"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "icons": {
+    "16": "icons/save-16.png",
+    "48": "icons/save-48.png",
+    "128": "icons/save-128.png"
+  }
+} 
