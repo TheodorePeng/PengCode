@@ -1,0 +1,196 @@
+/*
+  ================================================================================
+  =   "完美版" RemNote 思维导图样式 (v3.4 - Ultra Compact & Bordered)               =
+  =   作者: Gemini (根据用户反馈优化)                                          =
+  =   特点:                                                                    =
+  =     - 专业、清晰的 "肘状" 连接线 (带末端延长)                              =
+  =     - 现代化的无边框卡片 + 阴影效果 (超紧凑布局 + 虚线边框)               =
+  =     - 使用 CSS 变量，轻松实现主题定制                                        =
+  ================================================================================
+*/
+
+/* --- 1. 全局变量定义 --- */
+/* 只需要修改这里的值，就能改变整个思维导图的风格！ */
+.animate-zoom-into-bullet[data-rem-container-tags*="mind-map"] {
+  /* -- 主题颜色 -- */
+  --mindmap-bg: #f8f9fa;           /* 思维导图整体背景色 (浅灰) */
+  --mindmap-border: 2px dashed #ced4da; /* 思维导图整体边框 (虚线) */
+  --connector-color: #495057;      /* 连接线颜色 (深灰色) */
+  --connector-width: 2px;         /* 连接线粗细 (加粗) */
+  --node-text-color: #212529;      /* 节点默认文字颜色 */
+  --arrow-color: #6c757d;          /* 箭头颜色 */
+
+  /* -- 节点样式 -- */
+  --node-bg: #ffffff;             /* 节点背景 (纯白) */
+  
+  /* -- 尺寸与动画 (超紧凑化) -- */
+  --node-padding: 6px 10px;       /* 节点内边距 (进一步减少) */
+  --node-margin: 8px;             /* 节点外边距 (进一步减少) */
+  --line-offset: 16px;            /* 连接线与节点的距离 (进一步减少) */
+  --node-radius: 5px;             /* 节点圆角 (进一步减少) */
+  --container-radius: 12px;       /* 容器圆角 (增加) */
+  --shadow: 0 1px 6px rgba(0, 0, 0, 0.05);  /* 节点默认阴影 (进一步减轻) */
+  --shadow-hover: 0 3px 10px rgba(0, 0, 0, 0.08); /* 悬浮时阴影 (进一步减轻) */
+  --transition-speed: 0.2s;       /* 动画过渡速度 */
+}
+
+/* --- 2. 界面清理 --- */
+[data-rem-container-tags*="mind-map"] .hierarchy-editor__tag-bar__tag__delete,
+[data-rem-container-tags*="mind-map"] .hierarchy-editor__tag-bar__tag {
+  display: none !important;
+}
+
+/* --- 3. 主容器与布局 --- */
+.animate-zoom-into-bullet[data-rem-container-tags*="mind-map"] {
+  order: 2;
+  overflow: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  background-color: var(--mindmap-bg);
+  border: var(--mindmap-border); /* 添加虚线边框 */
+  border-radius: var(--container-radius); /* 增加圆角 */
+  padding: 12px; /* 进一步减少容器内边距 */
+  margin: 8px 0; /* 添加少量外边距，与其他内容区分 */
+}
+
+.animate-zoom-into-bullet[data-rem-container-tags*="mind-map"] .animate-zoom-into-bullet {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+}
+
+/* --- 4. 通用节点样式 --- */
+.animate-zoom-into-bullet[data-rem-container-tags*="mind-map"] .TreeNode > .animate-zoom-into-bullet > div:first-child {
+  background: var(--node-bg);
+  color: var(--node-text-color);
+  border-radius: var(--node-radius);
+  padding: var(--node-padding);
+  margin: var(--node-margin) 0;
+  margin-left: var(--line-offset); /* 为连接线留出空间 */
+  font-weight: 500;
+  border: none; /* 移除边框 */
+  box-shadow: var(--shadow); /* 使用阴影 */
+  position: relative;
+  min-width: 70px; /* 进一步减少最小宽度 */
+  text-align: center;
+  transition: all var(--transition-speed) ease-in-out;
+}
+
+/* 在每个节点右侧添加箭头 */
+.animate-zoom-into-bullet[data-rem-container-tags*="mind-map"] .TreeNode > .animate-zoom-into-bullet > div:first-child::after {
+  content: '<';
+  position: absolute;
+  right: -14px; /* 调整箭头位置，适应更紧凑的布局 */
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--arrow-color);
+  font-size: 12px; /* 稍微减小箭头大小 */
+  font-weight: bold;
+  opacity: 0.7;
+}
+
+.animate-zoom-into-bullet[data-rem-container-tags*="mind-map"] .TreeNode > .animate-zoom-into-bullet > div:first-child:hover {
+  transform: translateY(-1px); /* 减少悬浮位移 */
+  box-shadow: var(--shadow-hover); /* 悬浮时加深阴影 */
+  z-index: 10;
+}
+
+/* --- 5. 标题节点特殊样式 --- */
+/* 修改为支持所有层级的根节点（没有父级 TreeNode 的节点） */
+.animate-zoom-into-bullet[data-rem-container-tags*="mind-map"] .animate-zoom-into-bullet:not(.tree-node--children .animate-zoom-into-bullet) > div:first-child {
+  margin-left: 0; /* 根节点没有连接线，不需要偏移 */
+  font-weight: 600; /* 让根节点略粗一些以示区别 */
+}
+
+/* 根节点不显示箭头 */
+.animate-zoom-into-bullet[data-rem-container-tags*="mind-map"] .animate-zoom-into-bullet:not(.tree-node--children .animate-zoom-into-bullet) > div:first-child::after {
+  display: none;
+}
+
+/* --- 6. 连接线重构 (Elbow Connector Style) --- */
+.animate-zoom-into-bullet[data-rem-container-tags*="mind-map"] .tree-node--children > .animate-zoom-into-bullet {
+  position: relative;
+}
+
+/* 绘制水平连接线（从节点向左到主干） */
+.animate-zoom-into-bullet[data-rem-container-tags*="mind-map"] .tree-node--children > .animate-zoom-into-bullet::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: var(--line-offset);
+  height: var(--connector-width);
+  background: var(--connector-color);
+  transform: translateY(-50%);
+}
+
+/* 绘制垂直连接线（连接所有同级节点） */
+.animate-zoom-into-bullet[data-rem-container-tags*="mind-map"] .tree-node--children > .animate-zoom-into-bullet::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--connector-width);
+  height: 100%;
+  background: var(--connector-color);
+}
+
+/* 对第一个子节点的垂直线进行修正，使其从中间开始 */
+.animate-zoom-into-bullet[data-rem-container-tags*="mind-map"] .tree-node--children > .animate-zoom-into-bullet:first-of-type::after {
+  top: 50%;
+  height: 50%;
+}
+
+/* 对最后一个子节点的垂直线进行修正，使其到中间结束并超出一段 */
+.animate-zoom-into-bullet[data-rem-container-tags*="mind-map"] .tree-node--children > .animate-zoom-into-bullet:last-of-type::after {
+  height: calc(50% + var(--node-margin) / 2);
+}
+
+/* 如果只有一个子节点，则不显示垂直线 */
+.animate-zoom-into-bullet[data-rem-container-tags*="mind-map"] .tree-node--children > .animate-zoom-into-bullet:only-of-type::after {
+  display: none;
+}
+
+/* --- 7. 交互优化 (支持所有层级) --- */
+/* 始终显示【文档】类型的圆点图标 */
+.animate-zoom-into-bullet[data-rem-container-tags*="mind-map"] .TreeNode .animate-zoom-into-bullet > div:first-child:has([data-rem-tags~="document"]) .rem-bullet__container {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* 默认隐藏【普通】的展开/折叠圆点，悬浮时才显示 */
+.animate-zoom-into-bullet[data-rem-container-tags*="mind-map"] .TreeNode .animate-zoom-into-bullet > div:first-child:not(:has([data-rem-tags~="document"])):not(:hover) .rem-bullet__container {
+    visibility: hidden !important;
+    opacity: 0;
+    transition: opacity var(--transition-speed) ease;
+}
+
+/* 鼠标悬浮在【普通】节点上时，显示其圆点 */
+.animate-zoom-into-bullet[data-rem-container-tags*="mind-map"] .TreeNode .animate-zoom-into-bullet > div:first-child:not(:has([data-rem-tags~="document"])):hover .rem-bullet__container {
+    visibility: visible !important;
+    opacity: 1;
+}
+
+/* 移除TreeNode默认边框 */
+.animate-zoom-into-bullet[data-rem-container-tags*="mind-map"] .TreeNode {
+  border-width: 0 !important;
+}
+
+/* 子节点加载动画 */
+.animate-zoom-into-bullet[data-rem-container-tags*="mind-map"] .tree-node--children .animate-zoom-into-bullet {
+  animation: fadeIn var(--transition-speed) ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px); /* 减少动画位移 */
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}   
