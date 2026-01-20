@@ -1,0 +1,11 @@
+{
+  "name": "TobyPeng",
+  "description": "A powerful, local-first alternative to Toby for organizing browser tabs and collections into beautiful workspaces.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ],
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  }
+}
